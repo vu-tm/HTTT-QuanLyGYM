@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/css-BanHang/kho.css" />
+    <link rel="stylesheet" href="../../css/css-BanHang/BanHang.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>FastFit</title>
+</head>
+
+<body><div id="toast"></div>
+    <!----------------------------------BEGIN HEAD---------------------------------->
+    <header>
+        <div class="custom-menu">
+            <div class="logo">
+                <img src="../../img/fav-icon.png" alt="GYM" />
+            </div>
+            <nav class="nav-menu" id="kho-nav-menu">
+                <ul>
+                    <li><a href="thongtin-khohang.html" class="nav-item"><i class="fa-solid fa-warehouse"></i> Kho
+                            hàng</a></li>
+                    <li><a href="nhaphang.html" class="nav-item"><i class="fa-solid fa-boxes-packing"></i> Nhập hàng</a>
+                    </li>
+                    <li><a href="ncc.html" class="nav-item"><i class="fa-solid fa-truck"></i> Nhà cung cấp</a></li>
+                    <li><a href="quanly-the.html" class="nav-item"><i class="fa-solid fa-ticket"></i> Vé tập</a></li>
+                </ul>
+            </nav>
+            <nav class="nav-menu">
+                <ul>
+                    <li class="user-profile-display" id="userProfile">
+                        <div class="user-profile-content">
+                            <div class="user-avatar">
+                                <i class="fa-regular fa-user"></i>
+                            </div>
+                            <div class="user-info">
+                                <div class="user-name" id="displayUserName"></div>
+                                <div class="user-position" id="displayUserPosition"></div>
+                            </div>
+                            <i class="fa-solid fa-caret-down dropdown-icon"></i>
+                        </div>
+                        <div class="dropdown_menu" id="logoutDropdown">
+                            <div class="dropdown_menu-col">
+                                <a href="#" class="menu-item" id="logoutBtn">
+                                    <i class="fa-solid fa-power-off"></i>
+                                    <span>Đăng xuất</span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!----------------------------------END HEAD---------------------------------->
+    <!----------------------------------BEGIN CONTENT---------------------------------->
+    <div class="container">
+        <div class="sidebar open">
+            <div class="sidebar-list">
+                <div class="khung_BH tim-kiem_TTKH">
+                    <div class="title_BH">Tìm kiếm</div>
+                    <input type="text" id="search-input" class="form-control" placeholder="Theo mã hàng, tên hàng">
+                </div>
+                <div class="khung_BH ton-kho_TTKH">
+                    <div class="title_BH">Tồn kho</div>
+                    <div class="filter-group">
+                        <input type="radio" name="stock-filter" id="stock-all" class="radio" checked>
+                        <label for="stock-all">Tất cả</label>
+
+                        <input type="radio" name="stock-filter" id="stock-available" class="radio">
+                        <label for="stock-available">Còn hàng trong kho</label>
+
+                        <input type="radio" name="stock-filter" id="stock-out" class="radio">
+                        <label for="stock-out">Hết hàng trong kho</label>
+                    </div>
+                </div>
+                <div class="khung_BH trang-thai_TTKH">
+                    <div class="title_BH">Trạng thái</div>
+                    <div class="filter-group">
+                        <input type="radio" name="status-filter" id="status-all" class="radio" checked>
+                        <label for="status-all">Tất cả</label>
+
+                        <input type="radio" name="status-filter" id="status-selling" class="radio">
+                        <label for="status-selling">Hàng đang bán</label>
+
+                        <input type="radio" name="status-filter" id="status-stopped" class="radio">
+                        <label for="status-stopped">Hàng ngừng bán</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="noi-dung_BH">
+            <div class="header_BH">
+                <h2>Thông Tin Kho Hàng</h2>
+                <div class="header-buttons_BH">
+                    <button class="btn ban-hang_btn"><i class="fa-solid fa-plus"></i> Tạo mới</button>
+                    <button class="btn xuat-file_btn"><i class="fa-solid fa-file-excel"></i> Xuất file</button>
+                </div>
+            </div>
+            <!-- Table -->
+            <div class="table-container_TTKH">
+                <table class="table-item">
+                    <thead>
+                        <tr>
+                            <th>Hành động</th>
+                            <th>Hình ảnh</th>
+                            <th class="sortable" data-sort="code">Mã hàng</th>
+                            <th class="sortable" data-sort="name">Tên hàng
+                                <i class="fa-solid fa-arrow-up-wide-short"></i>
+                                <i class="fa-solid fa-arrow-down-wide-short" style="display:none"></i>
+                            </th>
+                            <th class="sortable" data-sort="sellPrice">Giá bán
+                                <i class="fa-solid fa-arrow-up-wide-short"></i>
+                                <i class="fa-solid fa-arrow-down-wide-short" style="display:none"></i>
+                            </th>
+                            <th class="sortable" data-sort="buyPrice">Giá nhập
+                                <i class="fa-solid fa-arrow-up-wide-short"></i>
+                                <i class="fa-solid fa-arrow-down-wide-short" style="display:none"></i>
+                            </th>
+                            <th class="sortable" data-sort="stock">Tồn kho
+                                <i class="fa-solid fa-arrow-up-wide-short"></i>
+                                <i class="fa-solid fa-arrow-down-wide-short" style="display:none"></i>
+                            </th>
+                            <th>Trạng thái</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+            <div class="pagination-container"></div>
+        </div>
+
+    </div>
+    <!----------------------------------END CONTENT---------------------------------->
+
+    <!----------------------------------BEGIN MODALS---------------------------------->
+    <div id="add-product-modal" class="backdrop" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>THÊM MỚI SẢN PHẨM</h3>
+                <button class="close-btn">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-body-container">
+                    <!-- Phần hình ảnh bên trái -->
+                    <div class="image-section">
+                        <div class="form-group">
+                            <label>Hình ảnh sản phẩm</label>
+                            <div class="image-upload-container">
+                                <label for="product-image-upload" class="image-upload-label">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <span>Chọn ảnh từ máy tính</span>
+                                </label>
+                                <input type="file" id="product-image-upload" accept="image/*" style="display: none;">
+                                <div id="image-preview" class="image-preview">
+                                    <span>Chưa có ảnh</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Phần thông tin bên phải -->
+                    <div class="info-section">
+                        <div class="form-group">
+                            <label>Mã hàng:</label>
+                            <input id="add-product-code" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label>Tên sản phẩm</label>
+                            <input type="text" id="add-product-name" placeholder="Nhập tên sản phẩm">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Giá nhập</label>
+                                <input type="number" id="add-product-cost" placeholder="Nhập giá nhập">
+                            </div>
+                            <div class="form-group">
+                                <label>Giá bán</label>
+                                <input type="number" id="add-product-price" placeholder="Nhập giá bán">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Trạng thái</label>
+                            <div class="status-options">
+                                <label class="status-option">
+                                    <input type="radio" name="product-status" value="Đang bán" checked>
+                                    <span class="radio-custom"></span>
+                                    <span class="status-label">Đang bán</span>
+                                </label>
+                                <label class="status-option">
+                                    <input type="radio" name="product-status" value="Ngừng bán">
+                                    <span class="radio-custom"></span>
+                                    <span class="status-label">Ngừng bán</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="confirm-add-product" class="save-btn">
+                    <i class="fa-solid fa-plus"></i> THÊM SẢN PHẨM
+                </button>
+                <button class="close-btn-footer">
+                    <i class="fa-solid fa-xmark"></i> ĐÓNG
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- View Product Modal -->
+    <div id="view-product-modal" class="backdrop" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>CHI TIẾT SẢN PHẨM</h3>
+                <button class="close-btn">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-body-container">
+                    <div class="image-section">
+                        <img id="view-product-image" src="" alt="Product Image"
+                            style="width: 100%; max-height: 200px; object-fit: contain;">
+                    </div>
+                    <div class="info-section">
+                        <div class="form-group">
+                            <label>Mã hàng</label>
+                            <div id="view-product-id" class="view-product-info"></div>
+                        </div>
+                        <div class="form-group">
+                            <label>Tên hàng</label>
+                            <div id="view-product-name" class="view-product-info"></div>
+                        </div>
+                        <div class="form-group">
+                            <label>Giá nhập</label>
+                            <div id="view-product-cost" class="view-product-info"></div>
+                        </div>
+                        <div class="form-group">
+                            <label>Giá bán</label>
+                            <div id="view-product-price" class="view-product-info"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="close-btn-footer">
+                    <i class="fa-solid fa-xmark"></i> Đóng
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-----------------------------------END MODALS----------------------------------->
+
+
+    <script src="../../js/toast-message.js"></script>
+    <script src="../../js/index.js"></script>
+    <script src="../../js/js-BanHang/khohang.js"></script>
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+
+    <script>
+        window.onload = function() {
+            renderKhoHangTable();
+        }
+    </script>
+</body>
+
+</html>

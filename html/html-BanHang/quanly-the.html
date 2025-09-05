@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/css-BanHang/kho.css" />
+    <link rel="stylesheet" href="../../css/css-BanHang/BanHang.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>FastFit</title>
+</head>
+
+<body><div id="toast"></div>
+    <!----------------------------------BEGIN HEAD---------------------------------->
+    <header>
+        <div class="custom-menu">
+            <div class="logo">
+                <img src="../../img/fav-icon.png" alt="GYM" />
+            </div>
+            <nav class="nav-menu" id="kho-nav-menu">
+                <ul>
+                    <li><a href="thongtin-khohang.html" class="nav-item"><i class="fa-solid fa-warehouse"></i> Kho
+                            hàng</a></li>
+                    <li><a href="nhaphang.html" class="nav-item"><i class="fa-solid fa-boxes-packing"></i> Nhập hàng</a>
+                    </li>
+                    <li><a href="ncc.html" class="nav-item"><i class="fa-solid fa-truck"></i> Nhà cung cấp</a></li>
+                    <li><a href="quanly-the.html" class="nav-item"><i class="fa-solid fa-ticket"></i> Vé tập</a></li>
+                </ul>
+            </nav>
+            <nav class="nav-menu">
+                <ul>
+                    <li class="user-profile-display" id="userProfile">
+                        <div class="user-profile-content">
+                            <div class="user-avatar">
+                                <i class="fa-regular fa-user"></i>
+                            </div>
+                            <div class="user-info">
+                                <div class="user-name" id="displayUserName"></div>
+                                <div class="user-position" id="displayUserPosition"></div>
+                            </div>
+                            <i class="fa-solid fa-caret-down dropdown-icon"></i>
+                        </div>
+                        <div class="dropdown_menu" id="logoutDropdown">
+                            <div class="dropdown_menu-col">
+                                <a href="#" class="menu-item" id="logoutBtn">
+                                    <i class="fa-solid fa-power-off"></i>
+                                    <span>Đăng xuất</span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!----------------------------------END HEAD---------------------------------->
+    <!--------------------------------BEGIN CONTENT---------------------------------->
+    <div class="container">
+        <div class="sidebar open">
+            <div class="sidebar-list">
+                <div class="khung_BH tim-kiem_VT">
+                    <div class="title_BH">Tìm kiếm</div>
+                    <input type="text" class="form-control" placeholder="Theo mã gói tập">
+                    <input type="text" class="form-control" placeholder="Theo tên gói tập">
+                </div>
+                <div class="khung_BH thoi-gian_VT">
+                    <div class="title_BH">Thời lượng (ngày)</div>
+                    <form class="filter-date_BH">
+                        <input type="number" class="form-control-date_VT" id="duration-min" placeholder="Từ">
+                        <h4>―</h4>
+                        <input type="number" class="form-control-date_VT" id="duration-max" placeholder="Đến">
+                    </form>
+                </div>
+                <div class="khung_BH thoi-gian_VT">
+                    <div class="title_BH">Chi phí</div>
+                    <form class="filter-date_BH">
+                        <input type="number" class="form-control-date_VT" id="price-min" placeholder="Từ">
+                        <h4>―</h4>
+                        <input type="number" class="form-control-date_VT" id="price-max" placeholder="Đến">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="noi-dung_BH">
+            <div class="header_BH">
+                <h2>Quản lý vé tập</h2>
+                <div class="header-buttons_BH">
+                    <button class="btn them-goitap_btn"><i class="fa-solid fa-plus"></i> Thêm gói tập</button>
+                    <button class="btn xuat-file_btn"><i class="fa-solid fa-file-excel"></i> Xuất file</button>
+                </div>
+            </div>
+
+            <!-- Table -->
+            <div class="table-container_VT">
+                <table class="table-item">
+                    <thead>
+                        <tr>
+                            <th>Hành động</th>
+                            <th>Mã gói tập</th>
+                            <th>Tên gói tập</th>
+                            <th>Thời lượng (ngày)</th>
+                            <th>Chi phí</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+            <div class="pagination-container"></div>
+        </div>
+    </div>
+    <!----------------------------------END CONTENT---------------------------------->
+
+    <!----------------------------------BEGIN MODALS---------------------------------->
+    <!-- viewPackage - Modal xem chi tiết gói tập -->
+    <div class="backdrop" id="package-detail-modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Chi tiết gói tập: <span id="package-id"></span></h3>
+                <button class="close-btn">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="package-info">
+                    <div>
+                        <p><strong>Tên gói tập:</strong> <span id="package-name"></span></p>
+                        <p><strong>Mã gói tập:</strong> <span id="package-code"></span></p>
+                    </div>
+                    <div>
+                        <p><strong>Thời lượng:</strong> <span id="package-duration"></span> ngày</p>
+                        <p><strong>Chi phí:</strong> <span id="package-price"></span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="close-btn-footer">
+                    <i class="fa-solid fa-xmark"></i> Đóng
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Thêm/Sửa Gói Tập -->
+    <div id="package-modal" class="backdrop">
+        <div class="modal-content package-modal-content">
+            <div class="modal-header package-modal-header">
+                <h3>Tạo gói tập mới</h3>
+                <button class="close-btn">×</button>
+            </div>
+            <div class="modal-body package-modal-body">
+                <div class="package-form-container">
+                    <div class="form-group">
+                        <label for="new-package-id">Mã gói tập:</label>
+                        <input type="text" id="new-package-id" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="new-package-name">Tên gói tập:</label>
+                        <input type="text" id="new-package-name" placeholder="Nhập tên gói tập">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="new-package-duration">Thời lượng (ngày):</label>
+                            <input type="number" id="new-package-duration" placeholder="Nhập số ngày">
+                        </div>
+                        <div class="form-group">
+                            <label for="new-package-price">Chi phí:</label>
+                            <input type="number" id="new-package-price" placeholder="Nhập chi phí">
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button id="save-package-btn" class="save-invoice-btn">
+                            <i class="fa-solid fa-check"></i> Lưu gói tập
+                        </button>
+                        <button id="close-package-btn" class="close-btn-footer">
+                            <i class="fa-solid fa-xmark"></i> Hủy
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!----------------------------------END MODALS---------------------------------->
+    <script src="../../js/js-BanHang/quanly-the.js"></script>
+    <script src="../../js/toast-message.js"></script>
+    <script src="../../js/index.js"></script>
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+</body>
+
+</html>

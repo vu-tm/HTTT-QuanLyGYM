@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/toast-message.css" />
+    <link rel="stylesheet" href="../../css/css-NhanVien/quantringuoidung.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <!-- hiển thị lịch -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Moment.js -->
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
+    <!-- Daterangepicker -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
+    <title>FastFit</title>
+</head>
+
+<body>
+    <div id="toast"></div>
+    <!----------------------------------BEGIN HEAD---------------------------------->
+    <header>
+        <div class="custom-menu">
+            <div class="logo">
+                <img src="../../img/fav-icon.png" alt="GYM" />
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="../html-KhachHang/guest.html" class="nav-item"><i class="fa-solid fa-users"></i> Khách
+                            hàng</a>
+                    </li>
+                    <li><a href="../html-BanHang/BanHang-admin.html" class="nav-item"><i
+                                class="fa-solid fa-cart-shopping"></i>
+                            Bán hàng</a></li>
+                    <li><a href="../html-PT/PT.html" class="nav-item"><i class="fa-solid fa-person"></i> PT</a></li>
+                    <li class="has-dropdown">
+                        <a href="#" class="nav-item"><i class="fa-solid fa-table"></i> Báo cáo</a>
+                        <div class="dropdown_menu">
+                            <!-- Cột Doanh thu -->
+                            <div class="dropdown_menu-col">
+                                <div class="menu-heading">DOANH THU</div>
+                                <a href="../html-ThongKe/doanhthu-hoivien.html" class="menu-item">Báo cáo hội viên</a>
+                                <a href="../html-ThongKe/doanhthu-banhang.html" class="menu-item">Báo cáo bán hàng</a>
+                                <a href="../html-ThongKe/thongke.html" class="menu-item">Thống kê</a>
+                            </div>
+                            <!-- Cột Nhân viên -->
+                            <div class="dropdown_menu-col">
+                                <div class="menu-heading">NHÂN VIÊN</div>
+                                <a href="../html-NhanVien/BC_buoidayPT.html" class="menu-item">Báo cáo/ Thống kê buổi
+                                    dạy của PT theo lớp</a>
+                                <a href="../html-NhanVien/BC_thongkePT.html" class="menu-item">Báo cáo thống kê PT</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="#" class="nav-item"><i class="fa-solid fa-gear"></i> Cài đặt</a>
+                        <div class="dropdown_menu">
+                            <!-- Cột Bán hàng -->
+                            <div class="dropdown_menu-col">
+                                <div class="menu-heading">BÁN HÀNG</div>
+                                <a href="../html-BanHang/nhaphang-admin.html" class="menu-item">Nhập hàng</a>
+                                <a href="../html-BanHang/thongtin-khohang-admin.html" class="menu-item">Thông tin kho
+                                    hàng</a>
+                                <a href="../html-BanHang/ncc-admin.html"> Nhà cung cấp</a>
+                                <a href="../html-BanHang/quanly-the-admin.html" class="menu-item">Quản lý thẻ</a>
+                            </div>
+                            <!-- Cột Dịch vụ -->
+                            <div class="dropdown_menu-col">
+                                <div class="menu-heading">DỊCH VỤ</div>
+                                <a href="../html-PT/QLhlv.html" class="menu-item">Quản lý huấn luyện viên</a>
+                                <a href="../html-PT/QLcatap.html" class="menu-item">Quản lý ca tập</a>
+                            </div>
+                            <!-- Cột Nhân viên -->
+                            <div class="dropdown_menu-col">
+                                <div class="menu-heading">NHÂN VIÊN</div>
+                                <a href="../html-NhanVien/danhsach_nv.html" class="menu-item">Danh sách nhân viên</a>
+                                <a href="../html-NhanVien/QL_calamviec.html" class="menu-item">Quản lý ca làm việc nhân
+                                    viên</a>
+                                <a href="../html-NhanVien/quantringuoidung.html" class="menu-item">Quản trị người
+                                    dùng</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <nav class="nav-menu">
+                <ul>
+                    <li class="user-profile-display" id="userProfile">
+                        <div class="user-profile-content">
+                            <div class="user-avatar">
+                                <i class="fa-regular fa-user"></i>
+                            </div>
+                            <div class="user-info">
+                                <div class="user-name" id="displayUserName"></div>
+                                <div class="user-position" id="displayUserPosition"></div>
+                            </div>
+                            <i class="fa-solid fa-caret-down dropdown-icon"></i>
+                        </div>
+                        <div class="dropdown_menu" id="logoutDropdown">
+                            <div class="dropdown_menu-col">
+                                <a href="#" class="menu-item" id="logoutBtn">
+                                    <i class="fa-solid fa-power-off"></i>
+                                    <span>Đăng xuất</span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!----------------------------------END HEAD------------------------------------>
+
+    <!--------------------------------MAIN CONTENT-------------------------------->
+    <!--------------------------------MAIN CONTENT-------------------------------->
+    <div class="container">
+        <!-- left content -->
+        <div class="left_content">
+            <div class="section">
+                <div class="section-header">Quản lý người dùng</div>
+                <button class="btn-all">
+                    Xem tất cả
+                </button>
+                <!-- Role List -->
+                <div class="role-list" id="roleList">
+                    <div class="role-item active">
+                        <span class="role-name">Quản lý</span>
+                    </div>
+                    <div class="role-item">
+                        <span class="role-name">Nhân viên bán hàng</span>
+                    </div>
+                    <div class="role-item">
+                        <span class="role-name">Nhân viên kho</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- right content -->
+        <div class="right-content">
+            <!-- Search Bar -->
+            <div class="search-bar">
+                <button class="btn-add">
+                    <i class="fas fa-plus-circle btn-icon"></i>
+                    Thêm mới
+                </button>
+            </div>
+
+            <!-- Table -->
+            <!-- Table -->
+            <div class="user-table">
+                <table class="table-item">
+                    <thead>
+                        <tr>
+                            <th style="width: 100px;">Thao tác</th>
+                            <th style="width: 50px;">STT</th>
+                            <th>Tên đăng nhập</th>
+                            <th>Vai trò</th>
+                            <th>Trạng thái phê duyệt</th>
+                            <th>Trạng thái khóa</th>
+                            <th>Ngày tạo</th>
+                        </tr>
+                    </thead>
+                    <tbody class="user-table-body">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal "Thêm mới tài khoản" -->
+    <div class="modal" id="addUserModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-box">
+            <div class="modal-header">
+                <span>Thêm mới người dùng</span>
+                <button class="modal-close" id="closeAddUserModal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="selectEmployee">Chọn nhân viên <span style="color: red;">(*)</span></label>
+                    <select id="selectEmployee" class="input-field">
+                        <option value="">Chọn nhân viên</option>
+                        <option value="employee1">Nhân viên 1</option>
+                        <option value="employee2">Nhân viên 2</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="username">Tên đăng nhập <span style="color: red;">(*)</span></label>
+                    <input type="text" id="username" class="input-field">
+                </div>
+                <div class="form-group">
+                    <label for="password">Mật khẩu <span style="color: red;">(*)</span></label>
+                    <input type="password" id="password" class="input-field">
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Nhập lại mật khẩu <span style="color: red;">(*)</span></label>
+                    <input type="password" id="confirmPassword" class="input-field">
+                </div>
+                <div class="form-group">
+                    <label for="selectRole">Vai trò</label>
+                    <select id="selectRole" class="input-field">
+                        <option value="">Chọn vai trò</option>
+                        <option value="Quản lý">Quản lý</option>
+                        <option value="Nhân viên bán hàng">Nhân viên bán hàng</option>
+                        <option value="Nhân viên kho">Nhân viên kho</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-submit" id="createUserBtn"><i class="fas fa-save"></i> Tạo mới</button>
+                <button class="btn-cancel" id="cancelAddUserModal"><i class="fas fa-times"></i> Đóng</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal "Xem tài khoản" -->
+    <div class="modal" id="viewUserModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-box">
+            <div class="modal-header">
+                <span>Thông tin tài khoản</span>
+                <button class="modal-close" id="closeViewUserModal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Tên nhân viên</label>
+                    <input type="text" id="viewEmployeeName" class="input-field" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Tên đăng nhập</label>
+                    <input type="text" id="viewUsername" class="input-field" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Vai trò</label>
+                    <input type="text" id="viewRole" class="input-field" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Trạng thái phê duyệt</label>
+                    <input type="text" id="viewApprovalStatus" class="input-field" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Trạng thái khóa</label>
+                    <div id="viewLockStatus" class="lock-status" style="display: inline-flex; margin-top: 5px;">
+                        <!-- Nội dung sẽ được thêm bằng JavaScript -->
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Ngày tạo</label>
+                    <input type="text" id="viewCreatedAt" class="input-field" readonly>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-cancel" id="cancelViewUserModal"><i class="fas fa-times"></i> Đóng</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alert thêm thành công -->
+    <div id="successAlert" class="alert">Thêm thành công!</div>
+    <!-- Alert điền đầy đủ thông tin -->
+    <div id="errorAlert" class="alert alert-error">Vui lòng điền đầy đủ thông tin!</div>
+    <script>
+
+        sessionStorage.setItem("visitedReport", "true");
+    </script>
+    <script src="../../js/index.js"></script>
+    <script src="../../js/toast-message.js"></script>
+    <script src="../../js/js-NhanVien/quantringuoidung.js"></script>
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+</body>
+
+</html>

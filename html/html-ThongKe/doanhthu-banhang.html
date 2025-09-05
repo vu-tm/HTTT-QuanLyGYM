@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Báo cáo bán hàng</title>
+  <link rel="stylesheet" href="../../css/style.css" />
+  <link rel="stylesheet" href="../../css/css-ThongKe/doanhthu-banhang.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <!-- CSS thư viện ngoài -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/3.1/daterangepicker.min.css" />
+
+  <!-- JS thư viện ngoài -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/3.1/daterangepicker.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="../../js/js-ThongKe/doanhthu-banhang.js"></script>
+  <script src="../../js/index.js"></script>
+</head>
+
+<body>
+  <!----------------------------------BEGIN HEAD---------------------------------->
+  <header>
+    <div class="custom-menu">
+      <div class="logo">
+        <img src="../../img/fav-icon.png" alt="GYM" />
+      </div>
+      <nav class="nav-menu">
+        <ul>
+          <li><a href="../html-KhachHang/guest.html" class="nav-item"><i class="fa-solid fa-users"></i> Khách
+              hàng</a>
+          </li>
+          <li><a href="../html-BanHang/BanHang-admin.html" class="nav-item"><i class="fa-solid fa-cart-shopping"></i>
+              Bán hàng</a></li>
+          <li><a href="../html-PT/PT.html" class="nav-item"><i class="fa-solid fa-person"></i> PT</a></li>
+          <li class="has-dropdown">
+            <a href="#" class="nav-item"><i class="fa-solid fa-table"></i> Báo cáo</a>
+            <div class="dropdown_menu">
+              <!-- Cột Doanh thu -->
+              <div class="dropdown_menu-col">
+                <div class="menu-heading">DOANH THU</div>
+                <a href="../html-ThongKe/doanhthu-hoivien.html" class="menu-item">Báo cáo hội viên</a>
+                <a href="../html-ThongKe/doanhthu-banhang.html" class="menu-item">Báo cáo bán hàng</a>
+                <a href="../html-ThongKe/thongke.html" class="menu-item">Thống kê</a>
+              </div>
+              <!-- Cột Nhân viên -->
+              <div class="dropdown_menu-col">
+                <div class="menu-heading">NHÂN VIÊN</div>
+                <a href="../html-NhanVien/BC_buoidayPT.html" class="menu-item">Báo cáo/ Thống kê buổi
+                  dạy của PT theo lớp</a>
+                <a href="../html-NhanVien/BC_thongkePT.html" class="menu-item">Báo cáo thống kê PT</a>
+              </div>
+            </div>
+          </li>
+          <li class="has-dropdown">
+            <a href="#" class="nav-item"><i class="fa-solid fa-gear"></i> Cài đặt</a>
+            <div class="dropdown_menu">
+              <!-- Cột Bán hàng -->
+              <div class="dropdown_menu-col">
+                <div class="menu-heading">BÁN HÀNG</div>
+                <a href="../html-BanHang/nhaphang-admin.html" class="menu-item">Nhập hàng</a>
+                <a href="../html-BanHang/thongtin-khohang-admin.html" class="menu-item">Thông tin kho
+                  hàng</a>
+                <a href="../html-BanHang/ncc-admin.html"> Nhà cung cấp</a>
+                <a href="../html-BanHang/quanly-the-admin.html" class="menu-item">Quản lý thẻ</a>
+              </div>
+              <!-- Cột Dịch vụ -->
+              <div class="dropdown_menu-col">
+                <div class="menu-heading">DỊCH VỤ</div>
+                <a href="../html-PT/QLhlv.html" class="menu-item">Quản lý huấn luyện viên</a>
+                <a href="../html-PT/QLcatap.html" class="menu-item">Quản lý ca tập</a>
+              </div>
+              <!-- Cột Nhân viên -->
+              <div class="dropdown_menu-col">
+                <div class="menu-heading">NHÂN VIÊN</div>
+                <a href="../html-NhanVien/danhsach_nv.html" class="menu-item">Danh sách nhân viên</a>
+                <a href="../html-NhanVien/QL_calamviec.html" class="menu-item">Quản lý ca làm việc nhân
+                  viên</a>
+                <a href="../html-NhanVien/quantringuoidung.html" class="menu-item">Quản trị người
+                  dùng</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <nav class="nav-menu">
+        <ul>
+          <li class="user-profile-display" id="userProfile">
+            <div class="user-profile-content">
+              <div class="user-avatar">
+                <i class="fa-regular fa-user"></i>
+              </div>
+              <div class="user-info">
+                <div class="user-name" id="displayUserName"></div>
+                <div class="user-position" id="displayUserPosition"></div>
+              </div>
+              <i class="fa-solid fa-caret-down dropdown-icon"></i>
+            </div>
+            <div class="dropdown_menu" id="logoutDropdown">
+              <div class="dropdown_menu-col">
+                <a href="#" class="menu-item" id="logoutBtn">
+                  <i class="fa-solid fa-power-off"></i>
+                  <span>Đăng xuất</span>
+                </a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <!----------------------------------END HEAD------------------------------------>
+  <div class="container">
+    <!-- Left Sidebar -->
+    <div class="sidebar">
+      <!-- Data Type Section -->
+      <div class="sidebar-section">
+        <div class="section-header">
+          <h3>Loại dữ liệu</h3>
+          <button class="toggle-btn"></button>
+        </div>
+        <div class="section-content">
+          <div class="radio-option">
+            <input type="radio" id="ban-hang" name="data-type" checked />
+            <label for="ban-hang">Bán hàng</label>
+          </div>
+          <div class="radio-option">
+            <input type="radio" id="nhap-hang" name="data-type" />
+            <label for="nhap-hang">Nhập hàng</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Report Type Section -->
+      <div class="sidebar-section">
+        <div class="section-header">
+          <h3>Loại Thống kê</h3>
+          <button class="toggle-btn"></button>
+        </div>
+        <div class="section-content">
+          <div class="radio-option">
+            <input type="radio" id="theo-thoi-gian" name="report-type" checked />
+            <label for="theo-thoi-gian">Theo thời gian</label>
+          </div>
+          <div class="radio-option">
+            <input type="radio" id="theo-san-pham" name="report-type" />
+            <label for="theo-san-pham">Theo sản phẩm</label>
+          </div>
+          <div class="radio-option">
+            <input type="radio" id="theo-nhan-vien" name="report-type" />
+            <label for="theo-nhan-vien">Theo nhân viên</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Time Period Section -->
+      <div class="sidebar-section">
+        <div class="section-header">
+          <h3>Thời gian</h3>
+          <button class="toggle-btn"></button>
+        </div>
+        <div class="section-content">
+          <div class="date-range">
+            <input type="text" value="01/04/2025 - 20/04/2025" class="date-input" />
+            <button class="calendar-btn">
+              <i class="fas fa-calendar"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+      <div class="header">
+        <h2>Báo cáo bán hàng</h2>
+        <button class="export-btn">
+          <i class="fas fa-file-export"></i> Xuất file
+        </button>
+      </div>
+
+      <!-- Main Report Area -->
+      <div class="report-container">
+        <!-- Summary Cards - Sales -->
+        <div class="summary-card-container" id="sales-summary">
+          <div class="summary-item">
+            <div class="summary-label">Tổng tiền</div>
+            <div class="summary-value">0</div>
+          </div>
+          <div class="summary-item">
+            <div class="summary-label">Tổng giảm giá</div>
+            <div class="summary-value">0</div>
+          </div>
+          <div class="summary-item">
+            <div class="summary-label">Tổng doanh thu</div>
+            <div class="summary-value">0</div>
+          </div>
+          <div class="summary-item">
+            <div class="summary-label">Tổng nợ</div>
+            <div class="summary-value">0</div>
+          </div>
+          <div class="summary-item">
+            <div class="summary-label">Tổng tiền thực thu</div>
+            <div class="summary-value">0</div>
+          </div>
+          <div class="summary-item">
+            <div class="summary-label">Số lượng hóa đơn</div>
+            <div class="summary-value">0</div>
+          </div>
+          <div class="summary-item">
+            <div class="summary-label">Số lượng sản phẩm</div>
+            <div class="summary-value">0</div>
+          </div>
+        </div>
+
+        <!-- Summary Cards - Imports -->
+        <div class="summary-card-container" id="imports-summary">
+          <div class="summary-item">
+            <div class="summary-label">Tổng tiền nhập</div>
+            <div class="summary-value">0</div>
+          </div>
+          <div class="summary-item">
+            <div class="summary-label">Tổng tiền đã trả</div>
+            <div class="summary-value">0</div>
+          </div>
+           <div class="summary-item">
+            <div class="summary-label">Tổng tiền còn nợ</div>
+            <div class="summary-value">0</div>
+          </div>
+           <div class="summary-item">
+            <div class="summary-label">Số lượng phiếu nhập</div>
+            <div class="summary-value">0</div>
+          </div>
+          <div class="summary-item">
+            <div class="summary-label">Tổng số lượng sản phẩm nhập</div>
+            <div class="summary-value">0</div>
+          </div>
+           <!-- Empty items to maintain grid structure if needed, or adjust CSS -->
+           <div class="summary-item" style="visibility: hidden;"></div>
+           <div class="summary-item" style="visibility: hidden;"></div>
+        </div>
+
+        <!-- Chart Container -->
+        <div class="chart-container">
+          <div class="chart-header">
+            
+          </div>
+          <div class="chart-grid">
+            <!-- Chart will be rendered here by JavaScript -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Bảng doanh thu theo thời gian -->
+      <div class="data-section revenue-table-time">
+        <h3>Doanh thu theo thời gian</h3>
+        <div class="data-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Thời gian</th>
+                <th>Doanh thu</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td colspan="2" class="no-data">Không có dữ liệu</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Bảng doanh thu theo sản phẩm -->
+      <div class="data-section revenue-table-product" style="display:none">
+        <h3>Doanh thu theo sản phẩm</h3>
+        <div class="data-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Sản phẩm</th>
+                <th>Doanh thu</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td colspan="2" class="no-data">Không có dữ liệu</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Bảng doanh thu theo nhân viên -->
+      <div class="data-section revenue-table-employee" style="display:none">
+        <h3>Doanh thu theo nhân viên</h3>
+        <div class="data-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Nhân viên</th>
+                <th>Doanh thu</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td colspan="2" class="no-data">Không có dữ liệu</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Detailed Information Section -->
+      <div class="data-section">
+        <h3>Thông tin chi tiết</h3>
+        <div class="data-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Mã</th>
+                <th>Thời gian</th>
+                <th>Tên KH/NCC</th>
+                <th>SĐT</th>
+                <th>Tổng tiền</th>
+                <th>Trạng thái</th>
+                <th>Loại</th>
+                <th>Thanh toán</th>
+                <th>Mã NV</th>
+                <th>Sản phẩm</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td colspan="10" class="no-data">Không có dữ liệu</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

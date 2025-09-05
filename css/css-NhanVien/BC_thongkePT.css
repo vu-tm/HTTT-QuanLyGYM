@@ -1,0 +1,181 @@
+.container {
+  display: flex;
+  gap: 20px;
+}
+
+/* đầu content */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+  border-radius: 5px;
+}
+
+.export-btn {
+  background-color: var(--green);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.export-btn i {
+  font-size: 18px;
+}
+
+.export-btn:hover {
+  background-color: var(--green);
+}
+
+/* trái */
+.left_content {
+  width: 18%;
+  background: #fff;
+  padding: 10px;
+}
+
+.section {
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 16px;
+}
+
+/* Tiêu đề của mỗi section */
+.section-header {
+  background: var(--blue);
+  color: white;
+  padding: 8px 10px;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* Các ô input và select */
+.section select,
+.section input[type="text"] {
+  width: 100%;
+  padding: 5px;
+  margin: 5px 0;
+  border: none;
+  outline: none;
+  background: #f8f9fa;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+/* Tùy chỉnh radio & checkbox */
+.option {
+  display: flex;
+  align-items: center;
+  padding: 8px 10px;
+  cursor: pointer;
+}
+#search-status .status-option {
+  font-size: 14px;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+#search-status .status-option:hover {
+  background-color: #e6f0ff;
+  border-radius: 4px;
+}
+
+/* Cách checkbox và radio button hiển thị */
+.option input {
+  margin-right: 10px;
+  width: 16px;
+  height: 16px;
+}
+
+/* Khi di chuột vào sẽ làm mờ nhẹ */
+.section select:hover,
+.section input[type="text"]:hover {
+  background: #e9ecef;
+}
+
+
+/* phải */
+.title_header {
+  font-size: 24px;
+}
+
+.right_content {
+  flex-grow: 1;
+  background-color: #fff;
+  padding: 8px 20px;
+}
+
+.right_content h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  font-weight: bold;
+  color: #333;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.no-data {
+  text-align: center;
+  font-style: italic;
+  color: #888;
+  background-color: #f0f0f0;
+}
+
+
+
+
+
+/* calender */
+.daterangepicker {
+  transform: scale(0.95);
+  transform-origin: top left;
+  font-size: 14px;
+}
+
+.daterangepicker .drp-calendar {
+  width: 500px;
+}
+
+.daterangepicker .ranges {
+  width: 120px;
+}
+
+.daterangepicker td,
+.daterangepicker th {
+  padding: 4px 6px;
+}

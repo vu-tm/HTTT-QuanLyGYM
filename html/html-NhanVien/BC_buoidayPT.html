@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../../css/style.css" />
+  <link rel="stylesheet" href="../../css/toast-message.css" />
+  <link rel="stylesheet" href="../../css/css-NhanVien/BC_buoidayPT.css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Moment.js -->
+  <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
+  <!-- Daterangepicker -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+  <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
+  <title>FastFit</title>
+</head>
+
+<body>
+  <div id="toast"></div>
+  <!----------------------------------BEGIN HEAD---------------------------------->
+  <header>
+    <div class="custom-menu">
+      <div class="logo">
+        <img src="../../img/fav-icon.png" alt="GYM" />
+      </div>
+      <nav class="nav-menu">
+        <ul>
+          <li><a href="../html-KhachHang/guest.html" class="nav-item"><i class="fa-solid fa-users"></i> Khách
+              hàng</a>
+          </li>
+          <li><a href="../html-BanHang/BanHang-admin.html" class="nav-item"><i class="fa-solid fa-cart-shopping"></i>
+              Bán hàng</a></li>
+          <li><a href="../html-PT/PT.html" class="nav-item"><i class="fa-solid fa-person"></i> PT</a></li>
+          </li>
+          <li class="has-dropdown">
+            <a href="#" class="nav-item"><i class="fa-solid fa-table"></i> Báo cáo</a>
+            <div class="dropdown_menu">
+              <!-- Cột Doanh thu -->
+              <div class="dropdown_menu-col">
+                <div class="menu-heading">DOANH THU</div>
+                <a href="../html-ThongKe/doanhthu-hoivien.html" class="menu-item">Báo cáo hội viên</a>
+                <a href="../html-ThongKe/doanhthu-banhang.html" class="menu-item">Báo cáo bán hàng</a>
+                <a href="../html-ThongKe/thongke.html" class="menu-item">Thống kê</a>
+              </div>
+              <!-- Cột Nhân viên -->
+              <div class="dropdown_menu-col">
+                <div class="menu-heading">NHÂN VIÊN</div>
+                <a href="../html-NhanVien/BC_buoidayPT.html" class="menu-item">Báo cáo/ Thống kê buổi
+                  dạy của PT theo lớp</a>
+                <a href="../html-NhanVien/BC_thongkePT.html" class="menu-item">Báo cáo thống kê PT</a>
+              </div>
+            </div>
+          </li>
+          <li class="has-dropdown">
+            <a href="#" class="nav-item"><i class="fa-solid fa-gear"></i> Cài đặt</a>
+            <div class="dropdown_menu">
+              <!-- Cột Bán hàng -->
+              <div class="dropdown_menu-col">
+                <div class="menu-heading">BÁN HÀNG</div>
+                <a href="../html-BanHang/nhaphang-admin.html" class="menu-item">Nhập hàng</a>
+                <a href="../html-BanHang/thongtin-khohang-admin.html" class="menu-item">Thông tin kho
+                  hàng</a>
+                <a href="../html-BanHang/ncc-admin.html"> Nhà cung cấp</a>
+                <a href="../html-BanHang/quanly-the-admin.html" class="menu-item">Quản lý thẻ</a>
+              </div>
+              <!-- Cột Dịch vụ -->
+              <div class="dropdown_menu-col">
+                <div class="menu-heading">DỊCH VỤ</div>
+                <a href="../html-PT/QLhlv.html" class="menu-item">Quản lý huấn luyện viên</a>
+                <a href="../html-PT/QLcatap.html" class="menu-item">Quản lý ca tập</a>
+              </div>
+              <!-- Cột Nhân viên -->
+              <div class="dropdown_menu-col">
+                <div class="menu-heading">NHÂN VIÊN</div>
+                <a href="../html-NhanVien/danhsach_nv.html" class="menu-item">Danh sách nhân viên</a>
+                <a href="../html-NhanVien/QL_calamviec.html" class="menu-item">Quản lý ca làm việc nhân
+                  viên</a>
+                <a href="../html-NhanVien/quantringuoidung.html" class="menu-item">Quản trị người
+                  dùng</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <nav class="nav-menu">
+        <ul>
+          <li class="user-profile-display" id="userProfile">
+            <div class="user-profile-content">
+              <div class="user-avatar">
+                <i class="fa-regular fa-user"></i>
+              </div>
+              <div class="user-info">
+                <div class="user-name" id="displayUserName"></div>
+                <div class="user-position" id="displayUserPosition"></div>
+              </div>
+              <i class="fa-solid fa-caret-down dropdown-icon"></i>
+            </div>
+            <div class="dropdown_menu" id="logoutDropdown">
+              <div class="dropdown_menu-col">
+                <a href="#" class="menu-item" id="logoutBtn">
+                  <i class="fa-solid fa-power-off"></i>
+                  <span>Đăng xuất</span>
+                </a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <!----------------------------------END HEAD------------------------------------>
+
+  <!--------------------------------MAIN CONTENT-------------------------------->
+  <div class="container">
+    <!-- Sidebar bên trái -->
+    <div class="left_content">
+      <div class="section">
+        <div class="section-header">Tìm kiếm</div>
+        <input type="text" class="sidebar-input" placeholder="Theo tên HLV">
+      </div>
+
+      <div class="section">
+        <div class="section-header">Thời gian <span class="toggle-icon"></span></div>
+        <div class="section-body">
+          <input type="text" class="sidebar-date" value="01/03/2025 - 30/03/2025">
+          <span class="calendar-icon">📅</span>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-header">Lựa chọn hiển thị</div>
+        <div class="section-body">
+          <label for="records">Số bản ghi</label>
+          <select id="records">
+            <option>10</option>
+            <option>20</option>
+            <option>30</option>
+            <option>40</option>
+            <option>50</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-header">Tổng số bản ghi</div>
+        <div class="section-body">Tổng số: 0</div>
+      </div>
+    </div>
+
+    <!-- Nội dung chính bên phải -->
+    <div class="right_content">
+      <div class="header_container">
+        <div class="title_header">Báo cáo - Thống kê buổi dạy của PT theo lịch</div>
+        <div class="export_container">
+          <button class="export_btn"><i class="fas fa-download"></i> Xuất file</button>
+        </div>
+      </div>
+
+      <div class="report_table">
+        <table>
+          <thead>
+            <tr>
+              <th>HLV</th>
+              <th>Lịch trình</th>
+              <th>Tổng buổi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td colspan="3" class="no-data">Không tìm thấy bản ghi nào</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Khu vực phân trang -->
+      <div class="pagination-controls">
+        <button id="prevPage">trước</button>
+        <span id="pageInfo">Trang 1 / 1</span>
+        <button id="nextPage">sau</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    $(function () {
+      // Gắn lịch chọn ngày
+      $('.sidebar-date').daterangepicker({
+        autoUpdateInput: true,
+        locale: {
+          format: 'DD/MM/YYYY',
+          applyLabel: 'Xác nhận',
+          cancelLabel: 'Hủy',
+          daysOfWeek: ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'],
+          monthNames: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6',
+            'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
+          firstDay: 1
+        }
+      });
+    });
+
+    sessionStorage.setItem("visitedReport", "true");
+  </script>
+  <script src="../../js/js-NhanVien/init_employees.js"></script>
+  <script src="../../js/js-NhanVien/init_shifts.js"></script>
+  <script src="../../js/toast-message.js"></script>
+  <script src="../../js/js-NhanVien/BC_buoidayPT.js"></script>
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+</body>
+
+</html>

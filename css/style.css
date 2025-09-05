@@ -1,0 +1,371 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --red: #e53935;
+  --header-blue: #24d6fa;
+  --blue: #49B3FC;
+  --green: #15DB95;
+  --border-gray: #ededed;
+  --blue-dark: #0056b3;
+  --green-dark: #218838;
+  --indigo: #6610f2;
+  --purple: #6f42c1;
+  --pink: #e83e8c;
+  --orange: #fd7e14;
+  --yellow: #ffc107;
+  --teal: #20c997;
+  --cyan: #17a2b8;
+  --white: #ffffff;
+  --gray: #6c757d;
+  --gray-dark: #343a40;
+
+  /* Màu chức năng */
+  --primary: #007bff;
+  --secondary: #6c757d;
+  --success: #28a745;
+  --info: #17a2b8;
+  --warning: #ffc107;
+  --danger: #dc3545;
+  --light: #f8f9fa;
+  --dark: #343a40;
+
+  --breakpoint-xs: 0;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+}
+
+button {
+  background-color: transparent;
+  cursor: pointer;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.header {
+  background-color: #007bff;
+  padding: 10px 20px;
+  color: black;
+  width: 100%;
+}
+
+.custom-menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  background-color: var(--header-blue);
+  height: 50px;
+  width: 100%;
+}
+
+.logo img {
+  height: 40px;
+  color: #f8f9fa;
+  margin-left: 10px;
+}
+
+.nav-menu {
+  height: 100%;
+  margin-left: 15px;
+  margin-right: 15px;
+  flex-grow: 1;
+}
+
+.nav-menu ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 5px;
+  height: 100%;
+}
+
+.nav-menu li {
+  position: relative;
+  height: 100%;
+}
+
+.nav-item {
+  color: #f8f9fa;
+  text-decoration: none;
+  font-size: 16px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0 12px;
+  transition: all 0.3s ease;
+}
+
+.nav-item.active-dropdown {
+  background-color: #ffffff33;
+  color: var(--blue);
+}
+
+.nav-item i {
+  font-size: 18px;
+}
+
+.nav-item:hover {
+  background-color: #ffffff33;
+  color: var(--blue);
+}
+
+/*──────────────────────────────────────────────────────*\
+ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤDROPDOWN-MENUㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ
+\*______________________________________________________*/
+.dropdown_menu {
+  pointer-events: none;
+  /* Vô hiệu hóa tương tác khi đang ẩn */
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  background: white;
+  border-radius: 4px;
+  border: 1px solid rgb(239, 239, 239);
+  box-shadow: rgb(0 0 0 / 18%) 0px 6px 12px 0px;
+  z-index: 9999;
+  width: max-content;
+  min-width: auto;
+  transform: translateX(-50%) translateY(10px);
+  overflow-x: visible;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+
+.nav-menu li:hover .dropdown_menu,
+.user-profile:hover .dropdown_menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.menu-heading {
+  padding: 14px;
+  font-weight: bold;
+  color: #007bff;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 6px;
+  margin-bottom: 8px;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+/* Định dạng từng cột */
+.dropdown_menu-col {
+  flex: 0 0 auto;
+  min-width: 160px;
+  width: auto;
+  max-width: none;
+}
+
+.dropdown_menu-col:not(:last-child) {
+  border-right: 1px solid #f0f0f0;
+}
+
+.dropdown_menu-col a {
+  display: block;
+  color: #555;
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 1.4;
+  padding: 10px 14px;
+  transition: all 0.2s ease;
+  white-space: normal;
+  word-break: break-word;
+}
+
+.dropdown_menu-col a:hover {
+  background-color: #f5f5f5;
+  color: #007bff;
+}
+
+.nav-menu:last-child {
+  margin-left: auto;
+  margin-right: 40px;
+}
+
+.nav-menu:last-child ul {
+  justify-content: flex-end;
+  /* Căn phải nội dung */
+}
+
+.user-profile-display {
+  padding: 0 15px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.user-profile-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #333;
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-avatar i {
+  font-size: 16px;
+  color: #666;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.user-position {
+  font-size: 12px;
+  color: #666;
+  line-height: 1.3;
+}
+
+/* Cập nhật CSS cho user dropdown */
+.user-profile-display {
+  position: relative;
+  cursor: pointer;
+}
+
+.dropdown-icon {
+  font-size: 12px;
+  margin-left: 5px;
+  color: #666;
+  transition: transform 0.3s ease;
+}
+
+#logoutDropdown {
+  position: absolute;
+  left: 0;
+  /* Sửa từ left thành right để căn chỉnh đúng */
+  top: 100%;
+  background: white;
+  border-radius: 4px;
+  border: 1px solid rgb(239, 239, 239);
+  box-shadow: rgb(0 0 0 / 18%) 0px 6px 12px 0px;
+  z-index: 1000;
+  width: 150px;
+  min-width: 150px;
+  max-width: 150px;
+  transform: translateY(10px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  /* Vô hiệu hóa khi ẩn */
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+
+#logoutDropdown .dropdown_menu-col {
+  width: 150px; /* Cố định chiều rộng bằng với dropdown */
+  min-width: 150px;
+  max-width: 150px;
+  flex: 0 0 150px; 
+}
+
+#logoutDropdown .dropdown_menu-col a {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Hiển thị dấu ... nếu quá dài */
+}
+
+#logoutBtn i {
+  color: var(--red);
+  padding: 0 15px;
+}
+
+/* Khi user-profile active, hiển thị dropdown */
+.user-profile-display.active #logoutDropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+  /* Cho phép tương tác khi hiển thị */
+}
+
+/* Thêm vào phần CSS hiện có */
+.has-dropdown .dropdown_menu {
+  pointer-events: auto;
+  /* Cho phép tương tác với dropdown */
+  margin-top: 0;
+  /* Đảm bảo không có khoảng cách giữa menu cha và con */
+}
+
+.has-dropdown:hover .dropdown_menu {
+  pointer-events: auto;
+  /* Đảm bảo dropdown có thể tương tác khi hover */
+}
+
+/* Tạo "cầu nối" giữa menu cha và menu con */
+.has-dropdown::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  background: transparent;
+}
+
+/* Thêm vào phần CSS hiện có */
+.has-dropdown .dropdown_menu {
+  pointer-events: none;
+  /* Ban đầu vô hiệu hóa */
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0.2s;
+}
+
+.has-dropdown:hover .dropdown_menu {
+  pointer-events: auto;
+  /* Cho phép tương tác khi hover */
+  transition-delay: 0s;
+}
+
+/* Tăng kích thước vùng đệm */
+.has-dropdown::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 15px;
+  background: transparent;
+  z-index: 1;
+}
+
+
+
+/*──────────────────────────────────────────────────────*\
+ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤEND DROPDOWN-MENUㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ
+\*______________________________________________________*/

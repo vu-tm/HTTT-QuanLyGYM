@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/css-BanHang/BanHang.css" />
+    <link rel="stylesheet" href="../../css/toast-message.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>FastFit</title>
+</head>
+<style>
+    .ncc-toolbar {
+    margin: 10px 0 5px 0;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.pagination-container {
+    margin: 15px 0 0 0;
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: center; /* căn giữa ngang */
+}
+.pagination-btn {
+    background: #fff;
+    border: 1px solid #00bfff;
+    color: #00bfff;
+    padding: 3px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+.pagination-btn.active,
+.pagination-btn:hover {
+    background: #00bfff;
+    color: #fff;
+}
+/* Thêm hoặc chỉnh sửa các class sau: */
+
+.inventory-products-container {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    padding: 16px 18px 16px 18px;
+    margin-left: 24px;
+    min-width: 320px;
+    max-width: 350px;
+    flex: 1 0 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    height: 100%;
+}
+
+#inventory-products {
+    margin-top: 10px;
+    overflow-y: auto;
+    max-height: 500px;
+}
+
+.inventory-product-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f7fafd;
+    border-radius: 6px;
+    padding: 10px 12px;
+    margin-bottom: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+}
+
+.inventory-product-item span {
+    flex: 1;
+    margin-right: 8px;
+    font-weight: 400;
+}
+
+.add-to-invoice-btn {
+    background: #19c37d;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+.add-to-invoice-btn:hover {
+    background: #13a06f;
+}
+</style>
+<body><div id="toast"></div>
+    <!----------------------------------BEGIN HEAD---------------------------------->
+    <header>
+        <div class="custom-menu">
+            <div class="logo">
+                <img src="../../img/fav-icon.png" alt="GYM" />
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="../html-KhachHang/guest.html" class="nav-item"><i class="fa-solid fa-users"></i> Khách
+                            hàng</a>
+                    </li>
+                    <li><a href="../html-BanHang/BanHang-admin.html" class="nav-item"><i
+                                class="fa-solid fa-cart-shopping"></i>
+                            Bán hàng</a></li>
+                    <li><a href="../html-PT/PT.html" class="nav-item"><i class="fa-solid fa-person"></i> PT</a></li>
+                    <li class="has-dropdown">
+                        <a href="#" class="nav-item"><i class="fa-solid fa-table"></i> Báo cáo</a>
+                        <div class="dropdown_menu">
+                            <!-- Cột Doanh thu -->
+                            <div class="dropdown_menu-col">
+                                <div class="menu-heading">DOANH THU</div>
+                                <a href="../html-ThongKe/doanhthu-hoivien.html" class="menu-item">Báo cáo hội viên</a>
+                                <a href="../html-ThongKe/doanhthu-banhang.html" class="menu-item">Báo cáo bán hàng</a>
+                                <a href="../html-ThongKe/thongke.html" class="menu-item">Thống kê</a>
+                            </div>
+                            <!-- Cột Nhân viên -->
+                            <div class="dropdown_menu-col">
+                                <div class="menu-heading">NHÂN VIÊN</div>
+                                <a href="../html-NhanVien/BC_buoidayPT.html" class="menu-item">Báo cáo/ Thống kê buổi
+                                    dạy của PT theo lớp</a>
+                                <a href="../html-NhanVien/BC_thongkePT.html" class="menu-item">Báo cáo thống kê PT</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="#" class="nav-item"><i class="fa-solid fa-gear"></i> Cài đặt</a>
+                        <div class="dropdown_menu">
+                            <!-- Cột Bán hàng -->
+                            <div class="dropdown_menu-col">
+                                <div class="menu-heading">BÁN HÀNG</div>
+                                <a href="../html-BanHang/nhaphang-admin.html" class="menu-item">Nhập hàng</a>
+                                <a href="../html-BanHang/thongtin-khohang-admin.html" class="menu-item">Thông tin kho
+                                    hàng</a>
+                                <a href="../html-BanHang/ncc-admin.html"> Nhà cung cấp</a>
+                                <a href="../html-BanHang/quanly-the-admin.html" class="menu-item">Quản lý thẻ</a>
+                            </div>
+                            <!-- Cột Dịch vụ -->
+                            <div class="dropdown_menu-col">
+                                <div class="menu-heading">DỊCH VỤ</div>
+                                <a href="../html-PT/QLhlv.html" class="menu-item">Quản lý huấn luyện viên</a>
+                                <a href="../html-PT/QLcatap.html" class="menu-item">Quản lý ca tập</a>
+                            </div>
+                            <!-- Cột Nhân viên -->
+                            <div class="dropdown_menu-col">
+                                <div class="menu-heading">NHÂN VIÊN</div>
+                                <a href="../html-NhanVien/danhsach_nv.html" class="menu-item">Danh sách nhân viên</a>
+                                <a href="../html-NhanVien/QL_calamviec.html" class="menu-item">Quản lý ca làm việc nhân
+                                    viên</a>
+                                <a href="../html-NhanVien/quantringuoidung.html" class="menu-item">Quản trị người
+                                    dùng</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <nav class="nav-menu">
+                <ul>
+                    <li class="user-profile-display" id="userProfile">
+                        <div class="user-profile-content">
+                            <div class="user-avatar">
+                                <i class="fa-regular fa-user"></i>
+                            </div>
+                            <div class="user-info">
+                                <div class="user-name" id="displayUserName"></div>
+                                <div class="user-position" id="displayUserPosition"></div>
+                            </div>
+                            <i class="fa-solid fa-caret-down dropdown-icon"></i>
+                        </div>
+                        <div class="dropdown_menu" id="logoutDropdown">
+                            <div class="dropdown_menu-col">
+                                <a href="#" class="menu-item" id="logoutBtn">
+                                    <i class="fa-solid fa-power-off"></i>
+                                    <span>Đăng xuất</span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!----------------------------------END HEAD------------------------------------>
+
+    <!----------------------------------BEGIN CONTENT---------------------------------->
+    <div class="container">
+        <div class="sidebar open">
+            <div class="sidebar-list">
+                <div class="khung_BH tim-kiem_BH">
+                    <div class="title_BH">Tìm kiếm</div>
+                    <input type="text" class="form-control" placeholder="Theo mã Hóa đơn">
+                    <input type="text" class="form-control" placeholder="Theo mã hàng, tên hàng">
+                    <input type="text" class="form-control" placeholder="Theo tên khách">
+                </div>
+                <div class="khung_BH thoi-gian_BH">
+                    <div class="title_BH">Thời gian</div>
+                    <form class="filter-date_BH">
+                        <input type="date" class="form-control-date_BH" id="time-start-user">
+                        <h4>―</h4>
+                        <input type="date" class="form-control-date_BH" id="time-end-user">
+                    </form>
+                </div>
+                <div class="khung_BH bo-loc_BH">
+                    <div class="title_BH">Bộ lọc</div>
+                    <div class="bo-loc-item_BH">
+                        <h4>Trạng thái</h4>
+                        <select name="status-filter" id="status-filter">
+                            <option>Tất cả</option>
+                            <option>Hoàn thành</option>
+                            <option>Phiếu tạm</option>
+                            <option>Đã hủy</option>
+                        </select>
+                    </div>
+                    <div class="bo-loc-item_BH">
+                        <h4>Loại hóa đơn</h4>
+                        <select name="bill-filter" id="bill-filter">
+                            <option>Tất cả</option>
+                            <option>Bán hàng</option>
+                            <option>Dịch vụ PT</option>
+                            <option>Bán vé</option>
+                        </select>
+                    </div>
+                    <div class="bo-loc-item_BH">
+                        <h4>Thanh toán</h4>
+                        <select name="payment-filter" id="payment-filter">
+                            <option>Tất cả</option>
+                            <option>Tiền mặt</option>
+                            <option>Chuyển khoản</option>
+                            <option>Khác</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="noi-dung_BH">
+            <div class="header_BH">
+                <h2>Hóa Đơn</h2>
+                <div class="header-buttons_BH">
+                    <button class="btn ban-hang_btn"><i class="fa-solid fa-plus"></i> Bán hàng</button>
+                    <button class="btn xuat-file_btn"><i class="fa-solid fa-file-excel"></i> Xuất file</button>
+                </div>
+            </div>
+
+            <!-- Bảng thống kê -->
+            <div class="dashboard-summary">
+                <div class="summary-card">
+                    <div class="summary-card-content">
+                        <div class="summary-title">Tổng số hóa đơn</div>
+                        <div class="summary-value" id="total-invoices">0</div>
+                    </div>
+                    <div class="summary-card-icon">
+                        <i class="fa-solid fa-receipt"></i>
+                    </div>
+
+                </div>
+                <div class="summary-card">
+                    <div class="summary-card-content">
+                        <div class="summary-title">Hoàn thành</div>
+                        <div class="summary-value" id="completed-invoices">0</div>
+                    </div>
+                    <div class="summary-card-icon">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-card-content">
+                        <div class="summary-title">Phiếu tạm</div>
+                        <div class="summary-value" id="pending-invoices">0</div>
+                    </div>
+                    <div class="summary-card-icon">
+                        <i class="fa-solid fa-hourglass-half"></i>
+                    </div>
+
+                </div>
+                <div class="summary-card">
+                    <div class="summary-card-content">
+                        <div class="summary-title">Doanh thu</div>
+                        <div class="summary-value" id="total-revenue">0</div>
+                    </div>
+                    <div class="summary-card-icon">
+                        <i class="fa-solid fa-dollar-sign"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Table -->
+            <div class="table-container_BH">
+                <table class="table-item">
+                    <thead>
+                        <tr>
+                            <th>Hành động</th>
+                            <th>Mã hóa đơn</th>
+                            <th>Thời gian</th>
+                            <th>Tên khách hàng</th>
+                            <th>Nhân viên nhập</th>
+                            <th>Tổng tiền hàng</th>
+                            <th>Trạng thái</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+
+            </div>
+
+            <div class="records-per-page-container">
+                <label for="records-per-page">Số bản ghi:</label>
+                <select class="records-per-page" id="records-per-page">
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                </select>
+            </div>
+            <div class="pagination-container"></div>
+        </div>
+
+    </div>
+    <!----------------------------------END CONTENT---------------------------------->
+
+
+    <!----------------------------------BEGIN MODALS---------------------------------->
+    <!-- viewInvoice -->
+    <div class="backdrop" id="invoice-detail-modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Chi tiết hóa đơn: <span id="invoice-id"></span></h3>
+                <button class="close-btn">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="invoice-info">
+                    <div>
+                        <p><strong>Khách hàng:</strong> <span id="customer-name_BH"></span></p>
+                        <p><strong>Nhân viên nhập:</strong> <span id="employ_BH"></span></p>
+                        <p><strong>Ngày:</strong> <span id="date_BH"></span></p>
+                    </div>
+                    <div>
+                        <p><strong>Loại hóa đơn:</strong> <span id="invoice-type_BH"></span></p>
+                        <p><strong>Phương thức thanh toán:</strong> <span id="payment-method_BH"></span></p>
+                        <p><strong>Trạng thái:</strong> <span id="status_BH" class="status-badge"></span></p>
+                    </div>
+                </div>
+
+                <h4 class="Danh-sach-san-pham-titlte">Danh sách sản phẩm</h4>
+                <table class="items-table">
+                    <thead>
+                        <tr>
+                            <th>Sản phẩm</th>
+                            <th>Số lượng</th>
+                            <th>Đơn giá</th>
+                            <th>Thành tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody id="items-list"></tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="1">Tổng:</td>
+                            <td id="total-items"></td>
+                            <td colspan="2" id="total-amount"></td>
+                        </tr>
+                    </tfoot>
+                </table>
+
+                <div class="invoice-summary">
+                    <p><strong>Tổng tiền:</strong> <span id="summary-total"></span></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="print-btn">
+                    <i class="fa-solid fa-floppy-disk"></i>
+                    In hóa đơn
+                </button>
+                <button class="close-btn-footer">
+                    <i class="fa-solid fa-xmark"></i></i>Đóng
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Bán Hàng -->
+    <div id="sell-modal" class="backdrop">
+        <div class="modal-content sell-modal-content">
+            <div class="modal-header sell-modal-header">
+                <h3>Tạo hóa đơn mới</h3>
+                <button class="close-btn">×</button>
+            </div>
+            <div class="modal-body sell-modal-body">
+                <div class="sell-modal-container">
+                    <!-- Left Side - Invoice Form -->
+                    <div class="invoice-form-container">
+                        <div class="form-group">
+                            <label for="new-invoice-id">Mã hóa đơn:</label>
+                            <input type="text" id="new-invoice-id" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="new-customer-name_BH">Tên khách hàng:</label>
+                            <select id="new-customer-name_BH" class="form-control">
+                                <option value="">-- Chọn khách hàng --</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="new-employee_BH">Nhân viên nhập:</label>
+                            <select id="new-employee_BH" class="form-control">
+                                <!-- Options sẽ được thêm bằng JavaScript -->
+                            </select>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="new-invoice-type_BH">Loại hóa đơn:</label>
+                                <select id="new-invoice-type_BH">
+                                    <option value="Bán hàng">Bán hàng</option>
+                                    <option value="Bán vé">Bán vé</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="new-payment-method_BH">Phương thức thanh toán:</label>
+                                <select id="new-payment-method_BH">
+                                    <option value="Tiền mặt">Tiền mặt</option>
+                                    <option value="Chuyển khoản">Chuyển khoản</option>
+                                    <option value="Khác">Khác</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="new-status_BH">Trạng thái:</label>
+                            <select id="new-status_BH">
+                                <option value="Phiếu tạm">Phiếu tạm</option>
+                                <option value="Hoàn thành">Hoàn thành</option>
+                                <option value="Đã hủy">Đã hủy</option>
+                            </select>
+                        </div>
+
+                        <div class="products-section">
+                            <div class="products-header">
+                                <h4>Danh sách sản phẩm</h4>
+                                <button id="add-product-btn" type="button">+ Thêm sản phẩm</button>
+                            </div>
+                            <div class="products-list-header">
+                                <span>Tên sản phẩm</span>
+                                <span>Số lượng</span>
+                                <span>Đơn giá</span>
+                                <span>Thao tác</span>
+                            </div>
+                            <div id="products-container"></div>
+                        </div>
+
+                        <div class="invoice-summary">
+                            <p><strong>Tổng tiền:</strong> <span id="invoice-total-amount">0 ₫</span></p>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button id="save-invoice-btn" class="save-invoice-btn">
+                                <i class="fa-solid fa-check"></i> Lưu hóa đơn
+                            </button>
+                            <button id="close-btn-footer" class="close-btn-footer">
+                                <i class="fa-solid fa-xmark"></i></i> Hủy
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Right Side - Product Inventory -->
+                    <div class="inventory-products-container">
+                        <h4>Sản phẩm trong kho</h4>
+                        <div id="inventory-products">
+                            <!-- Inventory products will be populated here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!----------------------------------END MODALS---------------------------------->
+
+    <script src="../../js/js-BanHang/BanHang.js"></script>
+    <script src="../../js/index.js"></script>
+    <script src="../../js/toast-message.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <title>Đăng nhập - FastFit</title>
+  <style>
+    :root {
+      --background: rgb(25, 42, 81);
+      --color: #FFFFFF;
+      --primary-color: #E94560;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "poppins";
+      background: var(--background);
+      color: var(--color);
+      letter-spacing: 1px;
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--color);
+    }
+
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-container {
+      position: relative;
+      width: 22.2rem;
+    }
+
+    .form-container {
+      border: 1px solid hsla(0, 0%, 65%, 0.158);
+      box-shadow: 0 0 36px 1px rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+      backdrop-filter: blur(20px);
+      z-index: 99;
+      padding: 2rem;
+    }
+
+    .login-container form input {
+      display: block;
+      padding: 14.5px;
+      width: 100%;
+      margin: 2rem 0;
+      color: var(--color);
+      outline: none;
+      background-color: #9191911f;
+      border: none;
+      border-radius: 5px;
+      font-weight: 500;
+      letter-spacing: 0.8px;
+      font-size: 15px;
+      backdrop-filter: blur(15px);
+    }
+
+    .login-container form input:focus {
+      box-shadow: 0 0 16px 1px rgba(0, 0, 0, 0.2);
+    }
+
+    .login-container form button {
+      background-color: var(--primary-color);
+      color: var(--color);
+      display: block;
+      padding: 13px;
+      border-radius: 5px;
+      outline: none;
+      font-size: 18px;
+      letter-spacing: 1.5px;
+      font-weight: bold;
+      width: 100%;
+      cursor: pointer;
+      margin-bottom: 0.5rem;
+      transition: all 0.1s ease-in-out;
+      border: none;
+    }
+
+    .login-container form button:hover {
+      box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.15);
+      transform: scale(1.02);
+    }
+
+    .circle {
+      width: 8rem;
+      height: 8rem;
+      background: var(--primary-color);
+      border-radius: 50%;
+      position: absolute;
+    }
+
+    .illustration {
+      position: absolute;
+      top: -14%;
+      right: -2px;
+      width: 90%;
+    }
+
+    .circle-one {
+      top: 0;
+      left: 0;
+      z-index: -1;
+      transform: translate(-45%, -45%);
+    }
+
+    .circle-two {
+      bottom: 0;
+      right: 0;
+      z-index: -1;
+      transform: translate(45%, 45%);
+    }
+
+    .opacity {
+      opacity: 0.6;
+    }
+
+    .error-message {
+      color: #ff6b6b;
+      text-align: center;
+      margin-top: 1rem;
+      margin-bottom: 0;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <section class="container">
+    <div class="login-container">
+      <div class="circle circle-one"></div>
+      <div class="form-container">
+        <img src="../img/3d-sportsman-login-png.webp" alt="illustration" class="illustration" />
+        <h1 class="opacity">ĐĂNG NHẬP</h1>
+        <form id="loginForm">
+          <input type="text" id="username" placeholder="TÊN ĐĂNG NHẬP" required />
+          <input type="password" id="password" placeholder="MẬT KHẨU" required />
+          <button type="submit" class="opacity">ĐĂNG NHẬP</button>
+          <div class="error-message" id="errorMessage"></div>
+        </form>
+      </div>
+      <div class="circle circle-two"></div>
+    </div>
+  </section>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const errorMessage = document.getElementById('errorMessage');
+      errorMessage.style.display = 'none';
+
+      try {
+        const res = await fetch('http://localhost:5000/api/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password })
+        });
+        const data = await res.json();
+
+        if (data.success) {
+          // Chuyển hướng theo vai trò
+          switch (data.user.role) {
+            case 'Quản lý':
+              window.location.href = '../html/index.html';
+              break;
+            case 'Nhân viên bán hàng':
+              window.location.href = '../html/html-BanHang/BanHang.html';
+              break;
+            case 'Nhân viên kho':
+              window.location.href = '../html/html-BanHang/thongtin-khohang.html';
+              break;
+            default:
+              window.location.href = '../html/index.html';
+          }
+        } else {
+          errorMessage.textContent = data.message || 'Sai tên đăng nhập hoặc mật khẩu, hoặc tài khoản bị khóa/chưa được phê duyệt';
+          errorMessage.style.display = 'block';
+        }
+      } catch (err) {
+        errorMessage.textContent = 'Lỗi kết nối máy chủ!';
+        errorMessage.style.display = 'block';
+      }
+    });
+  </script>
+  <script src="../js/toast-message.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/toast-message.css" />
+    <link rel="stylesheet" href="../../css/css-NhanVien/danhsach_nv.css" />
+    <!-- hiển thị lịch -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Moment.js -->
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
+    <!-- Daterangepicker -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
+    <title>FastFit</title>
+</head>
+
+<body>
+    <div id="toast"></div>
+    <!----------------------------------BEGIN HEAD---------------------------------->
+    <header>
+        <div class="custom-menu">
+            <div class="logo">
+                <img src="../../img/fav-icon.png" alt="GYM" />
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="../html-KhachHang/guest.html" class="nav-item"><i class="fa-solid fa-users"></i> Khách
+                            hàng</a>
+                    </li>
+                    <li><a href="../html-BanHang/BanHang-admin.html" class="nav-item"><i
+                                class="fa-solid fa-cart-shopping"></i>
+                            Bán hàng</a></li>
+                    <li><a href="../html-PT/PT.html" class="nav-item"><i class="fa-solid fa-person"></i> PT</a></li>
+                    <li class="has-dropdown">
+                        <a href="#" class="nav-item"><i class="fa-solid fa-table"></i> Báo cáo</a>
+                        <div class="dropdown_menu">
+                            <!-- Cột Doanh thu -->
+                            <div class="dropdown_menu-col">
+                                <div class="menu-heading">DOANH THU</div>
+                                <a href="../html-ThongKe/doanhthu-hoivien.html" class="menu-item">Báo cáo hội viên</a>
+                                <a href="../html-ThongKe/doanhthu-banhang.html" class="menu-item">Báo cáo bán hàng</a>
+                                <a href="../html-ThongKe/doanhthu-pt.html" class="menu-item">Doanh thu PT</a>                                <a href="../html-ThongKe/thongke.html" class="menu-item">Thống kê</a>
+                            </div>
+                            <!-- Cột Nhân viên -->
+                            <div class="dropdown_menu-col">
+                                <div class="menu-heading">NHÂN VIÊN</div>
+                                <a href="../html-NhanVien/BC_buoidayPT.html" class="menu-item">Báo cáo/ Thống kê buổi
+                                    dạy của PT theo lớp</a>
+                                <a href="../html-NhanVien/BC_thongkePT.html" class="menu-item">Báo cáo thống kê PT</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="#" class="nav-item"><i class="fa-solid fa-gear"></i> Cài đặt</a>
+                        <div class="dropdown_menu">
+                            <!-- Cột Bán hàng -->
+                            <div class="dropdown_menu-col">
+                                <div class="menu-heading">BÁN HÀNG</div>
+                                <a href="../html-BanHang/nhaphang-admin.html" class="menu-item">Nhập hàng</a>
+                                <a href="../html-BanHang/thongtin-khohang-admin.html" class="menu-item">Thông tin kho
+                                    hàng</a>
+                                <a href="../html-BanHang/ncc-admin.html"> Nhà cung cấp</a>
+                                <a href="../html-BanHang/quanly-the-admin.html" class="menu-item">Quản lý thẻ</a>
+                            </div>
+                            <!-- Cột Dịch vụ -->
+                            <div class="dropdown_menu-col">
+                                <div class="menu-heading">DỊCH VỤ</div>
+                                <a href="../html-PT/QLhlv.html" class="menu-item">Quản lý huấn luyện viên</a>
+                                <a href="../html-PT/QLcatap.html" class="menu-item">Quản lý ca tập</a>
+                            </div>
+                            <!-- Cột Nhân viên -->
+                            <div class="dropdown_menu-col">
+                                <div class="menu-heading">NHÂN VIÊN</div>
+                                <a href="../html-NhanVien/danhsach_nv.html" class="menu-item">Danh sách nhân viên</a>
+                                <a href="../html-NhanVien/QL_calamviec.html" class="menu-item">Quản lý ca làm việc nhân
+                                    viên</a>
+                                <a href="../html-NhanVien/quantringuoidung.html" class="menu-item">Quản trị người
+                                    dùng</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <nav class="nav-menu">
+                <ul>
+                    <li class="user-profile-display" id="userProfile">
+                        <div class="user-profile-content">
+                            <div class="user-avatar">
+                                <i class="fa-regular fa-user"></i>
+                            </div>
+                            <div class="user-info">
+                                <div class="user-name" id="displayUserName"></div>
+                                <div class="user-position" id="displayUserPosition"></div>
+                            </div>
+                            <i class="fa-solid fa-caret-down dropdown-icon"></i>
+                        </div>
+                        <div class="dropdown_menu" id="logoutDropdown">
+                            <div class="dropdown_menu-col">
+                                <a href="#" class="menu-item" id="logoutBtn">
+                                    <i class="fa-solid fa-power-off"></i>
+                                    <span>Đăng xuất</span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!----------------------------------END HEAD------------------------------------>
+
+    <!--------------------------------MAIN CONTENT-------------------------------->
+    <div class="container">
+
+        <!-- left content -->
+        <div class="left_content">
+            <div class="section">
+                <div class="section-header">Tìm kiếm</div>
+                <div class="section-body">
+                    <input type="text" placeholder="Nhập nội dung tìm kiếm">
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-header">Chức danh</div>
+                <div class="section-body">
+                    <label><input type="checkbox" checked> Huấn luyện viên</label>
+                    <label><input type="checkbox" checked> Nhân viên</label>
+                    <label><input type="checkbox" checked> Quản lý kho</label>
+                </div>
+            </div>
+
+
+            <div class="section">
+                <div class="section-header">Trạng thái</div>
+                <div class="section-body">
+                    <label><input type="radio" name="status" value="Tất cả" checked> Tất cả</label>
+                    <label><input type="radio" name="status" value="Đang làm việc"> Đang làm việc</label>
+                    <label><input type="radio" name="status" value="Đã nghỉ việc"> Đã nghỉ việc</label>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-header">Lựa chọn hiển thị</div>
+                <div class="section-body">
+                    <label for="records">Số bản ghi</label>
+                    <select id="records">
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="30">30</option>
+                        <option value="40">40</option>
+                        <option value="50">50</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- right content -->
+        <div class="right_content">
+            <div class="header_container">
+                <div class="title_header">Danh Sách Nhân Viên</div>
+                <div class="actions">
+                    <button id="openAddEmployeeModal"><i class="fa fa-plus-circle"></i> Tạo mới</button>
+                </div>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Hành động</th>
+                        <th>Mã</th>
+                        <th>Họ và tên</th>
+                        <th>Điện thoại</th>
+                        <th>Email</th>
+                        <th>Địa chỉ</th>
+                        <th>Giới tính</th>
+                        <th>Trạng thái</th>
+                        <th>Loại hợp đồng</th>
+                        <th>Mức lương</th>
+                        <th>Chức danh</th>
+                    </tr>
+                </thead>
+                <tbody id="roleList">
+                    <tr>
+                        <td colspan="11" class="no-data">Không tìm thấy bản ghi nào</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="pagination-controls">
+                <button id="prevPage" disabled>Trước</button>
+                <span id="pageInfo">Trang 1 / 1</span>
+                <button id="nextPage" disabled>Sau</button>
+            </div>
+            <div class="footer-note">Tổng số nhân viên: 0</div>
+        </div>
+
+        <!-- Modal thêm nhân viên -->
+        <div class="modal" id="addEmployeeModal">
+            <!-- Nội dung modal giữ nguyên -->
+            <div class="modal-overlay"></div>
+            <div class="modal-box">
+                <div class="modal-header">
+                    <span>Thêm mới nhân viên</span>
+                    <button class="modal-close" id="closeAddEmployeeModal"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="form-col">
+                                <div class="form-item">
+                                    <label for="empCode">Mã <span style="color: red;">(*)</span></label>
+                                    <input type="text" id="empCode" placeholder="EMP0000008" />
+                                </div>
+                                <div class="form-item">
+                                    <label for="empName">Họ và tên <span style="color: red;">(*)</span></label>
+                                    <input type="text" id="empName" placeholder="Nhập họ và tên" />
+                                </div>
+                                <div class="form-item">
+                                    <label for="empDob">Ngày sinh <span style="color: red;">(*)</span></label>
+                                    <input type="text" id="empDob" />
+                                    <button class="icon-btn"><i class="fas fa-calendar-alt"></i></button>
+                                </div>
+                                <div class="form-item">
+                                    <label for="empSex">Giới tính <span style="color: red;">(*)</label>
+                                    <select id="empSex">
+                                        <option value="Nam">Nam</option>
+                                        <option value="Nữ">Nữ</option>
+                                    </select>
+                                </div>
+                                <div class="form-item">
+                                    <label for="empPhone">Điện thoại <span style="color: red;">(*)</span></label>
+                                    <input type="text" id="empPhone" />
+                                </div>
+                                <div class="form-item">
+                                    <label for="empAddress">Địa chỉ <span style="color: red;">(*)</span></label>
+                                    <input type="text" id="empAddress" />
+                                </div>
+                                <div class="form-item">
+                                    <label for="empEmail">Email</label>
+                                    <input type="text" id="empEmail" />
+                                </div>
+                            </div>
+
+                            <div class="form-col">
+                                <div class="form-item">
+                                    <label for="empStatus">Trạng thái</label>
+                                    <button class="status-btn active" data-status="Đang làm">Đang làm</button>
+                                    <button class="status-btn" data-status="Nghỉ việc">Nghỉ việc</button>
+                                </div>
+
+                                <div class="form-item">
+                                    <label for="empPosition">Chức danh</label>
+                                    <select id="empPosition">
+                                        <option value="">Chọn chức danh</option>
+                                        <option value="Nhân viên">Nhân viên</option>
+                                        <option value="Quản lý kho">Quản lý kho</option>
+                                        <option value="Huấn luyện viên">Huấn luyện viên (PT)</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-item">
+                                    <label for="empContractType">Loại hợp đồng <span
+                                            style="color: red;">(*)</span></label>
+                                    <select id="empContractType">
+                                        <option value="">Chọn loại hợp đồng</option>
+                                        <option value="Hợp đồng lao động">Hợp đồng lao động</option>
+                                        <option value="Hợp đồng thử việc">Hợp đồng thử việc</option>
+                                        <option value="Cộng tác viên">Cộng tác viên</option>
+                                        <option value="Thực tập">Thực tập</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-item">
+                                    <label for="empSalary">Mức lương</label>
+                                    <input type="text" id="empSalary" />
+                                </div>
+                                <div class="form-item">
+                                    <label for="empPhoto">Ảnh nhân viên</label>
+                                    <input type="file" id="empPhoto" accept="image/*" />
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn-submit" id="saveEmployeeBtn"><i class="fas fa-plus"></i> Tạo mới</button>
+                    <button class="btn-cancel" id="cancelAddEmployeeModal"><i class="fas fa-times"></i> Đóng</button>
+                </div>
+            </div>
+        </div>
+        <!-- end modal them nhan vien -->
+
+
+
+        <!-- modal xem thông tin chi tiết nhân viên -->
+        <div id="employeeInfoModal" class="modal">
+            <div class="modal-overlay"></div>
+            <div class="modal-box">
+                <div class="modal-header">
+                    <span>Thông tin nhân viên</span>
+                    <button class="modal-close" id="employeeInfoModalClose">x</button>
+                </div>
+                <div class="modal-body">
+                    <div class="employee-info-container">
+                        <div class="employee-photo">
+                            <div id="employeePhoto" class="photo-placeholder"></div>
+                        </div>
+                        <div class="employee-details">
+                            <div class="info-item">
+                                <label>Mã:</label>
+                                <span id="infoEmpCode"></span>
+                            </div>
+                            <div class="info-item">
+                                <label>Họ và tên:</label>
+                                <span id="infoEmpName"></span>
+                            </div>
+                            <div class="info-item">
+                                <label>Ngày sinh:</label>
+                                <span id="infoEmpDob"></span>
+                            </div>
+                            <div class="info-item">
+                                <label>Giới tính:</label>
+                                <span id="infoEmpSex"></span>
+                            </div>
+                            <div class="info-item">
+                                <label>Điện thoại:</label>
+                                <span id="infoEmpPhone"></span>
+                            </div>
+                            <div class="info-item">
+                                <label>Địa chỉ:</label>
+                                <span id="infoEmpAddress"></span>
+                            </div>
+                            <div class="info-item">
+                                <label>Email:</label>
+                                <span id="infoEmpEmail"></span>
+                            </div>
+                            <div class="info-item">
+                                <label>Trạng thái:</label>
+                                <span id="infoEmpStatus"></span>
+                            </div>
+                            <div class="info-item">
+                                <label>Loại hợp đồng:</label>
+                                <span id="infoEmpContractType"></span>
+                            </div>
+                            <div class="info-item">
+                                <label>Mức lương:</label>
+                                <span id="infoEmpSalary"></span>
+                            </div>
+                            <div class="info-item">
+                                <label>Chức danh:</label>
+                                <span id="infoEmpPosition"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn-cancel" id="employeeInfoModalCancel">Đóng</button>
+                </div>
+            </div>
+        </div>
+        <!-- end modal xem thông tin chi tiết nhân viên -->
+
+
+        <!-- Modal Quản lý ca làm việc -->
+        <div id="shiftModal" class="modal" style="display: none;">
+            <div class="modal-overlay"></div>
+            <div class="modal-box">
+                <div class="modal-header">
+                    <h2 id="shiftModalTitle">Quản lý ca làm việc của nhân viên</h2>
+                    <button id="shiftModalClose" class="close-btn">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="actions">
+                        <button id="addShiftBtn" class="create-btn">Thêm ca làm</button>
+                    </div>
+                    <table class="shift-table">
+                        <thead>
+                            <tr>
+                                <th>Hành động</th>
+                                <th>Nhân viên</th>
+                                <th>Tên lịch làm việc</th>
+                                <th>Áp dụng từ</th>
+                                <th>Đến</th>
+                                <th>Chu kỳ</th>
+                            </tr>
+                        </thead>
+                        <tbody id="shiftList"></tbody>
+                    </table>
+                    <div class="pagination">
+                        <p>Tổng số bản ghi: <span id="shiftTotal">0</span></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="shiftModalCancel" class="cancel-btn">Đóng</button>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Modal Thêm ca làm việc -->
+        <div id="addShiftModal" class="modal-overlay" style="display: none;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Thêm ca làm việc</h2>
+                    <button id="addShiftModalClose" class="close-btn">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-item">
+                        <label for="shiftScheduleName">Tên lịch làm việc <span class="required">*</span></label>
+                        <input type="text" id="shiftScheduleName" placeholder="Nhập tên lịch làm việc">
+                    </div>
+                    <div class="form-item">
+                        <label for="shiftStartDate">Áp dụng từ <span class="required">*</span></label>
+                        <input type="text" id="shiftStartDate" placeholder="DD/MM/YYYY">
+                    </div>
+                    <div class="form-item">
+                        <label for="shiftEndDate">Đến <span class="required">*</span></label>
+                        <input type="text" id="shiftEndDate" placeholder="DD/MM/YYYY">
+                    </div>
+                    <div class="form-item">
+                        <label for="shiftCycle">Chu kỳ <span class="required">*</span></label>
+                        <select id="shiftCycle">
+                            <option value="Theo tuần">Theo tuần</option>
+                            <option value="Theo ngày">Theo ngày</option>
+                            <option value="Theo tháng">Theo tháng</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="saveShiftBtn" class="save-btn">Lưu</button>
+                    <button id="cancelAddShiftModal" class="cancel-btn">Huỷ</button>
+                </div>
+            </div>
+        </div>
+        <!-- end modal quan ly ca lam viec -->
+
+        <!-- ALERT -->
+        <!-- Custom Alert -->
+        <div class="custom-alert" id="customAlert">
+            <div class="custom-alert-box">
+                <div class="custom-alert-header">
+                    <span>Thông báo</span>
+                </div>
+                <div class="custom-alert-body" id="customAlertBody">
+                    <!-- Nội dung thông báo sẽ được thêm bằng JavaScript -->
+                </div>
+                <div class="custom-alert-footer">
+                    <button class="btn-ok" id="customAlertOk">OK</button>
+                </div>
+            </div>
+        </div>
+        <!-- alert xoá nhân viên -->
+        <div id="deleteConfirmAlert" class="custom-alert">
+            <div class="custom-alert-box">
+                <div class="custom-alert-header">
+                    <span>Xác nhận xóa</span>
+                </div>
+                <div class="custom-alert-body">Bạn có chắc muốn xóa nhân viên này?</div>
+                <div class="custom-alert-footer">
+                    <button class="btn-cancel" id="deleteCancelBtn">Hủy</button>
+                    <button class="btn-ok" id="deleteConfirmBtn">Xác nhận</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        sessionStorage.setItem("visitedReport", "true");
+    </script>
+    <script src="../../js/index.js"></script>
+    <script src="../../js/js-NhanVien/danhsach_nv_1.js"></script>
+    <script src="../../js/toast-message.js"></script>
+    <script src="../../js/js-NhanVien/init_employees.js"></script>
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+
+</body>
+
+</html>

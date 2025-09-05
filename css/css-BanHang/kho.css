@@ -1,0 +1,29 @@
+
+    .ncc-toolbar {
+    margin: 10px 0 5px 0;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.pagination-container {
+    margin: 15px 0 0 0;
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: center; /* căn giữa ngang */
+}
+.pagination-btn {
+    background: #fff;
+    border: 1px solid #00bfff;
+    color: #00bfff;
+    padding: 3px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+.pagination-btn.active,
+.pagination-btn:hover {
+    background: #00bfff;
+    color: #fff;
+}

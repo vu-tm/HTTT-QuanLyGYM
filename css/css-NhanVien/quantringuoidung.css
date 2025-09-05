@@ -1,0 +1,589 @@
+/* Base styles */
+.container {
+  display: flex;
+  background-color: #f8f9fa;
+  min-height: calc(100vh - 50px);
+  position: relative;
+}
+
+/* Alert styles */
+.alert {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  background-color: #28a745;
+  padding: 16px 24px;
+  z-index: 4;
+  font-size: 16px;
+  transition: opacity 0.3s ease;
+}
+
+.alert-error {
+  background-color: #e53935;
+}
+
+/* Left content styles - Giữ nguyên như code của bạn */
+.left_content {
+  width: 18%;
+  background: #fff;
+  padding: 10px;
+}
+
+.section {
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 16px;
+}
+
+.section-header {
+  background: var(--blue);
+  color: #fff;
+  padding: 8px 10px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+.section-body {
+  padding: 8px;
+}
+
+.section-body input[type="text"],
+.section-body select,
+.input-field {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.section-body label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 16px;
+}
+
+.section-body input[type="checkbox"],
+.section-body input[type="radio"] {
+  margin-right: 4px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.user-filter-input {
+  flex: 1;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  padding: 8px;
+  outline: none;
+}
+
+.user-filter-input:focus {
+  border-bottom: 1px solid #333;
+}
+
+/* Button styles - Kết hợp từ cả hai */
+.btn-them,
+.btn-add,
+.btn-submit {
+  background-color: var(--green);
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.btn-them {
+  width: 100%;
+  white-space: nowrap;
+}
+
+.btn-add {
+  border-radius: 3px;
+  padding: 12px 16px;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.btn-all {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  width: 95%;
+  padding: 12px;
+  border: 0px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-all:hover {
+  background-color: rgba(95, 240, 250, 0.2);
+}
+
+.btn-icon {
+  font-size: 16px;
+}
+
+/* Right content styles */
+.right-content {
+  flex: 1;
+  padding: 8px 20px;
+}
+
+.search-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 8px;
+  background-color: #f9f9f9;
+}
+
+.search-input-wrapper {
+  position: relative;
+  flex: 1;
+  max-width: 400px;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: #999;
+}
+
+.search-input {
+  width: 100%;
+  padding: 8px 12px 8px 32px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* Table styles - Kết hợp từ cả hai */
+.user-table table {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--border-gray);
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.table-item {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-item th,
+.table-item td {
+  max-width: 280px;
+  padding: 12px 10px;
+  text-align: center;
+  background-color: #fff;
+  border-bottom: 1px solid var(--border-gray);
+}
+
+.table-item th {
+  background-color: var(--blue);
+  font-weight: bold;
+  color: #ffffff;
+}
+
+/* Action buttons - Kết hợp từ cả hai */
+.action-cell {
+  display: flex;
+  gap: 8px;
+  justify-content: left;
+  align-items: center;
+}
+
+.action-btn {
+  border: none;
+  background: none;
+  padding: 6px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  font-size: 16px;
+}
+
+.view-btn,
+.action-btn.view {
+  color: var(--blue);
+}
+
+.view-btn:hover,
+.action-btn.view:hover {
+  background-color: var(--blue);
+  color: #fff;
+}
+
+.delete-btn,
+.action-btn.delete {
+  color: var(--red);
+}
+
+.delete-btn:hover,
+.action-btn.delete:hover {
+  background-color: var(--red);
+  color: #fff;
+}
+
+/* Status badges - Kết hợp từ cả hai */
+.badge-approved {
+  display: inline-block;
+  background-color: var(--green);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 13px;
+}
+
+.status-badge {
+  display: inline-block;
+  color: #000000;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: bold;
+  user-select: none;
+}
+
+.status-completed,
+.status-active {
+  background: linear-gradient(to bottom, #81FBB8, #28C76F);
+}
+
+.status-pending {
+  background: linear-gradient(to bottom, #FDEB71, #F8D800);
+}
+
+.status-cancelled,
+.status-inactive {
+  background: linear-gradient(to bottom, #FEB692, #EA5455);
+}
+
+.lock-status {
+  align-items: center;
+  border: 1px solid var(--green);
+  border-radius: 48px;
+  padding: 4px;
+  width: 28px;
+  height: 28px;
+  justify-content: left;
+  position: relative;
+  overflow: hidden;
+  transition: width 0.15s ease;
+  cursor: default;
+  font-size: 16px;
+}
+
+.lock-status span {
+  opacity: 0;
+  white-space: nowrap;
+  margin-left: 4px;
+  transition: opacity 0.3s ease;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.lock-status:hover {
+  width: fit-content;
+  justify-content: flex-start;
+  padding: 4px 8px 4px 6px;
+}
+
+.lock-status:hover span {
+  opacity: 1;
+}
+
+.lock-status.locked {
+  border-color: var(--red);
+  color: var(--red);
+}
+
+.lock-status.unlocked {
+  border-color: var(--green);
+  color: var(--green);
+}
+
+/* Modal styles - Giữ nguyên từ code của bạn */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-box {
+  position: relative;
+  background: #fff;
+  border-radius: 6px;
+  width: 40%;
+  max-width: 500px;
+  z-index: 2;
+  animation: fadeIn .3s ease-in-out;
+  overflow: hidden;
+}
+
+.modal-header {
+  background-color: var(--blue);
+  color: #fff;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+}
+
+.modal-body {
+  padding: 32px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.input-field[readonly] {
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  cursor: not-allowed;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-bottom: 16px;
+  margin-right: 5%;
+  background-color: #f9f9f9;
+}
+
+.btn-submit {
+  background-color: var(--green);
+  color: white;
+  border: none;
+  padding: 12px 16px;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.btn-cancel {
+  background-color: #ccc;
+  color: black;
+  border: none;
+  padding: 8px 14px;
+  cursor: pointer;
+}
+
+.modal-close {
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: scale(0.9);
+  }
+  to {
+      opacity: 1;
+      transform: scale(1);
+  }
+}
+
+/* Role list styles - Giữ nguyên từ code của bạn */
+.role-list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.role-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-bottom: 5px;
+}
+
+.role-item:hover {
+  background-color: rgba(95, 240, 250, 0.2);
+}
+
+.role-item.active {
+  background-color: #e0e0e0;
+  font-weight: bold;
+}
+
+.role-name {
+  flex-grow: 1;
+  font-size: 14px;
+  font-weight: bold;
+  pointer-events: auto;
+}
+
+.role-menu {
+  pointer-events: auto;
+  position: relative;
+}
+
+.role-item i {
+  padding: 8px;
+}
+
+.role-item i:hover,
+.role-item i:active {
+  background-color: rgba(95, 240, 250, 0.5);
+}
+
+.role-menu-dropdown {
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  z-index: 4;
+  width: fit-content;
+  transform: translateY(8px) translateX(0%);
+}
+
+.role-menu-dropdown div {
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 12px;
+  color: #333;
+  gap: 8px;
+  border-bottom: 1px solid #eee;
+}
+
+.role-menu-dropdown i {
+  margin-right: 8px;
+  font-size: 14px;
+  color: #666;
+}
+
+.role-menu-dropdown div:last-child {
+  border-bottom: none;
+}
+
+.role-menu-dropdown div:hover {
+  background-color: rgba(95, 240, 250, 0.1);
+}
+
+/* Permission list styles - Giữ nguyên từ code của bạn */
+.permission-list {
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.category-item {
+  margin-bottom: 16px;
+}
+
+.sub-item {
+  margin-left: 20px;
+  margin-bottom: 8px;
+}
+
+.category-item input[type="checkbox"],
+.sub-item input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.category-item label {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.sub-item label {
+  font-size: 14px;
+}
+
+.category-item i {
+  vertical-align: middle;
+}
+
+/* Delete confirmation modal - Giữ nguyên từ code của bạn */
+#deleteConfirmModal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  justify-content: center;
+  align-items: center;
+}
+
+#deleteConfirmModal .modal-box {
+  background: #fff;
+  width: 400px;
+  max-width: 90%;
+}
+
+#deleteConfirmModal .modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+  margin-bottom: 16px;
+}
+
+#deleteConfirmModal .modal-header span {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#deleteConfirmModal .modal-body p {
+  margin: 0;
+  font-size: 14px;
+  color: #333;
+}
+
+#deleteConfirmModal .btn-submit {
+  background-color: var(--green);
+  color: #fff;
+  padding: 8px 16px;
+}
+
+#deleteConfirmModal .btn-cancel {
+  background-color: var(--red);
+  color: #fff;
+  padding: 8px 16px;
+}

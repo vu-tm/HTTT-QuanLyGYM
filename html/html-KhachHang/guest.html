@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="vi">
+<style>
+  /* Đẹp cho phân trang khách hàng */
+#customer-pagination {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+#customer-pagination button {
+  min-width: 32px;
+  height: 32px;
+  border: none;
+  background: #f0f0f0;
+  color: #333;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+
+#customer-pagination button.active,
+#customer-pagination button:hover {
+  background: #1976d2;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* Style cho nút xuất Excel */
+.btn-export {
+  background-color: #217346;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.2s;
+}
+
+.btn-export:hover {
+  background-color: #1a5c38;
+}
+
+.btn-export i {
+  font-size: 16px;
+}
+</style>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../../css/style.css" />
+  <link rel="stylesheet" href="../../css/responsive.css" />
+  <link rel="stylesheet" href="../../css/css-KhachHang/guest.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Quản lý khách hàng</title>
+</head>
+
+<body>
+  <!----------------------------------BEGIN HEAD---------------------------------->
+  <header>
+    <div class="custom-menu">
+      <div class="logo">
+        <img src="../../img/fav-icon.png" alt="GYM" />
+      </div>
+      <nav class="nav-menu">
+        <ul>
+          <li><a href="../html-KhachHang/guest.html" class="nav-item"><i class="fa-solid fa-users"></i> Khách
+              hàng</a>
+          </li>
+          <li><a href="../html-BanHang/BanHang-admin.html" class="nav-item"><i class="fa-solid fa-cart-shopping"></i>
+              Bán hàng</a></li>
+          <li><a href="../html-PT/PT.html" class="nav-item"><i class="fa-solid fa-person"></i> PT</a></li>
+          </li>
+          <li class="has-dropdown">
+            <a href="#" class="nav-item"><i class="fa-solid fa-table"></i> Báo cáo</a>
+            <div class="dropdown_menu">
+              <!-- Cột Doanh thu -->
+              <div class="dropdown_menu-col">
+                <div class="menu-heading">DOANH THU</div>
+                <a href="../html-ThongKe/doanhthu-hoivien.html" class="menu-item">Báo cáo hội viên</a>
+                <a href="../html-ThongKe/doanhthu-banhang.html" class="menu-item">Báo cáo bán hàng</a>
+                <a href="../html-ThongKe/thongke.html" class="menu-item">Thống kê</a>
+              </div>
+              <!-- Cột Nhân viên -->
+              <div class="dropdown_menu-col">
+                <div class="menu-heading">NHÂN VIÊN</div>
+                <a href="../html-NhanVien/BC_buoidayPT.html" class="menu-item">Báo cáo/ Thống kê buổi
+                  dạy của PT theo lớp</a>
+                <a href="../html-NhanVien/BC_thongkePT.html" class="menu-item">Báo cáo thống kê PT</a>
+              </div>
+            </div>
+          </li>
+          <li class="has-dropdown">
+            <a href="#" class="nav-item"><i class="fa-solid fa-gear"></i> Cài đặt</a>
+            <div class="dropdown_menu">
+              <!-- Cột Bán hàng -->
+              <div class="dropdown_menu-col">
+                <div class="menu-heading">BÁN HÀNG</div>
+                <a href="../html-BanHang/nhaphang-admin.html" class="menu-item">Nhập hàng</a>
+                <a href="../html-BanHang/thongtin-khohang-admin.html" class="menu-item">Thông tin kho
+                  hàng</a>
+                <a href="../html-BanHang/ncc-admin.html"> Nhà cung cấp</a>
+                <a href="../html-BanHang/quanly-the-admin.html" class="menu-item">Quản lý thẻ</a>
+              </div>
+              <!-- Cột Dịch vụ -->
+              <div class="dropdown_menu-col">
+                <div class="menu-heading">DỊCH VỤ</div>
+                <a href="../html-PT/QLhlv.html" class="menu-item">Quản lý huấn luyện viên</a>
+                <a href="../html-PT/QLcatap.html" class="menu-item">Quản lý ca tập</a>
+              </div>
+              <!-- Cột Nhân viên -->
+              <div class="dropdown_menu-col">
+                <div class="menu-heading">NHÂN VIÊN</div>
+                <a href="../html-NhanVien/danhsach_nv.html" class="menu-item">Danh sách nhân viên</a>
+                <a href="../html-NhanVien/QL_calamviec.html" class="menu-item">Quản lý ca làm việc nhân
+                  viên</a>
+                <a href="../html-NhanVien/quantringuoidung.html" class="menu-item">Quản trị người
+                  dùng</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <nav class="nav-menu">
+        <ul>
+          <li class="user-profile-display" id="userProfile">
+            <div class="user-profile-content">
+              <div class="user-avatar">
+                <i class="fa-regular fa-user"></i>
+              </div>
+              <div class="user-info">
+                <div class="user-name" id="displayUserName"></div>
+                <div class="user-position" id="displayUserPosition"></div>
+              </div>
+              <i class="fa-solid fa-caret-down dropdown-icon"></i>
+            </div>
+            <div class="dropdown_menu" id="logoutDropdown">
+              <div class="dropdown_menu-col">
+                <a href="#" class="menu-item" id="logoutBtn">
+                  <i class="fa-solid fa-power-off"></i>
+                  <span>Đăng xuất</span>
+                </a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <!----------------------------------END HEAD------------------------------------>
+
+  <!--------------------------------MAIN CONTENT-------------------------------->
+  <div class="main-content">
+    <section class="dashboard-section">
+      <h1>Quản lý khách hàng</h1>
+      <div class="actions">
+        <button class="btn-add"><i class="fa-solid fa-plus"></i> Thêm khách hàng</button>
+        <button class="btn-search"><i class="fa-solid fa-magnifying-glass"></i> Tìm kiếm</button>
+        <input type="text" id="searchInput" placeholder="Nhập tên khách hàng..." />
+        <button class="btn-export"><i class="fa-solid fa-file-excel"></i> Xuất Excel</button>
+      </div>
+
+      <!------------------------------------form thêm khách------------------------------->
+      <div id="add-form-overlay"></div>
+      <div id="add-form" style="display:none;">
+        <h3>Thêm khách hàng</h3>
+        <form id="customer-add-form">
+          <label>Tên khách hàng:</label>
+          <input type="text" id="addName" required>
+
+          <label>Ngày sinh:</label>
+          <input type="date" id="addBirthdate" required>
+
+          <label>Giới tính:</label>
+          <select id="addGender">
+            <option value="Nam">Nam</option>
+            <option value="Nữ">Nữ</option>
+          </select>
+
+          <label>Địa chỉ:</label>
+          <input type="text" id="addAddress" required>
+
+          <label>Số điện thoại:</label>
+          <input type="text" id="addPhone" required>
+
+          <label>Loại thẻ:</label>
+          <select id="addCardType" required></select>
+
+          <label>Ngày bắt đầu:</label>
+          <input type="date" id="addStartDate" required>
+
+          <label>Ngày kết thúc:</label>
+          <input type="date" id="addEndDate" readonly style="background-color: #eee;" required>
+
+          <button type="submit" id="save-add-btn">Lưu</button>
+          <button type="button" onclick="closeAddForm()">Hủy</button>
+        </form>
+      </div>
+      <!------------------------------------------------------------------------------------->
+
+
+      <!--------------------------------bảng khách hàng---------------------------------->
+
+      <table class="customer-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Tên khách hàng</th>
+            <th>Ngày sinh</th>
+            <th>Giới tính</th>
+            <th>Địa chỉ</th>
+            <th>Số Điện Thoại</th>
+            <th>Loại thẻ</th>
+            <th>Ngày bắt đầu</th>
+            <th>Ngày kết thúc</th>
+            <th>Trạng thái</th>
+            <th>Thao tác</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Dữ liệu sẽ được JS render vào đây -->
+        </tbody>
+      </table>
+    </section>
+
+    <!-------------------------------------Form chỉnh sửa---------------------------->
+    <div id="edit-form-overlay"></div>
+    <div id="edit-form" style="display:none;">
+      <h3>Chỉnh sửa khách hàng</h3>
+      <form id="customer-edit-form">
+        <input type="hidden" id="edit-id">
+        <label>Tên: <input type="text" id="edit-name"></label><br>
+        <label>Ngày sinh: <input type="date" id="edit-birthdate"></label><br>
+        <label>Giới tính: <input type="text" id="edit-gender"></label><br>
+        <label>Địa chỉ: <input type="text" id="edit-address"></label><br>
+        <label>Số điện thoại: <input type="text" id="edit-phone"></label><br>
+        <label>Loại thẻ:</label>
+        <select id="edit-cardType" required></select><br>
+        <label>Ngày bắt đầu: <input type="date" id="edit-startDate"></label><br>
+        <label>Ngày kết thúc:
+          <input type="date" id="edit-endDate" readonly style="background-color: #eee;">
+        </label><br>
+        <label>Trạng thái:
+          <select id="edit-status">
+            <option value="Đang hoạt động">Đang hoạt động</option>
+            <option value="Ngừng hoạt động">Ngừng hoạt động</option>
+          </select>
+        </label><br><br>
+        <button type="submit" id="save-edit-btn">Lưu thay đổi</button>
+        <button type="button"
+          onclick="document.getElementById('edit-form').style.display='none'; document.getElementById('edit-form-overlay').style.display='none'">Hủy</button>
+      </form>
+    </div>
+    <!----------------------------------------------------------------------------->
+
+
+  </div>
+
+
+  <!------------------------------END MAIN CONTENT-------------------------------->
+  <script src="../../js/index.js"></script>
+  <script src="../../js/js-KhachHang/guest.js"></script>
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+</body>
+
+</html>

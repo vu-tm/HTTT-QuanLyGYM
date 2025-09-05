@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- CSS nội bộ -->
+  <link rel="stylesheet" href="../../css/css-ThongKe/doanhthu-hoivien.css" />
+  <link rel="stylesheet" href="../../css/style.css" />
+
+  <!-- CSS thư viện ngoài -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+  <!-- Tiêu đề -->
+  <title>Báo Cáo Thống Kê Đăng Ký - FastFit</title>
+
+  <!-- JS thư viện ngoài -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.3/chart.umd.min.js"></script>
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+
+  <!-- JS nội bộ -->
+  <script src="../../js/index.js"></script>
+  <script src="../../js/js-ThongKe/doanhthu-hoivien.js" defer></script>
+</head>
+
+<body>
+  <!----------------------------------BEGIN HEAD---------------------------------->
+  <header>
+    <div class="custom-menu">
+      <div class="logo">
+        <img src="../../img/fav-icon.png" alt="GYM" />
+      </div>
+      <nav class="nav-menu">
+        <ul>
+          <li><a href="../html-KhachHang/guest.html" class="nav-item"><i class="fa-solid fa-users"></i> Khách
+              hàng</a>
+          </li>
+          <li><a href="../html-BanHang/BanHang-admin.html" class="nav-item"><i class="fa-solid fa-cart-shopping"></i>
+              Bán hàng</a></li>
+          <li><a href="../html-PT/PT.html" class="nav-item"><i class="fa-solid fa-person"></i> PT</a></li>
+          <li class="has-dropdown">
+            <a href="#" class="nav-item"><i class="fa-solid fa-table"></i> Báo cáo</a>
+            <div class="dropdown_menu">
+              <!-- Cột Doanh thu -->
+              <div class="dropdown_menu-col">
+                <div class="menu-heading">DOANH THU</div>
+                <a href="../html-ThongKe/doanhthu-hoivien.html" class="menu-item">Báo cáo hội viên</a>
+                <a href="../html-ThongKe/doanhthu-banhang.html" class="menu-item">Báo cáo bán hàng</a>
+                <a href="../html-ThongKe/thongke.html" class="menu-item">Thống kê</a>
+              </div>
+              <!-- Cột Nhân viên -->
+              <div class="dropdown_menu-col">
+                <div class="menu-heading">NHÂN VIÊN</div>
+                <a href="../html-NhanVien/BC_buoidayPT.html" class="menu-item">Báo cáo/ Thống kê buổi
+                  dạy của PT theo lớp</a>
+                <a href="../html-NhanVien/BC_thongkePT.html" class="menu-item">Báo cáo thống kê PT</a>
+              </div>
+            </div>
+          </li>
+          <li class="has-dropdown">
+            <a href="#" class="nav-item"><i class="fa-solid fa-gear"></i> Cài đặt</a>
+            <div class="dropdown_menu">
+              <!-- Cột Bán hàng -->
+              <div class="dropdown_menu-col">
+                <div class="menu-heading">BÁN HÀNG</div>
+                <a href="../html-BanHang/nhaphang-admin.html" class="menu-item">Nhập hàng</a>
+                <a href="../html-BanHang/thongtin-khohang-admin.html" class="menu-item">Thông tin kho
+                  hàng</a>
+                <a href="../html-BanHang/ncc-admin.html"> Nhà cung cấp</a>
+                <a href="../html-BanHang/quanly-the-admin.html" class="menu-item">Quản lý thẻ</a>
+              </div>
+              <!-- Cột Dịch vụ -->
+              <div class="dropdown_menu-col">
+                <div class="menu-heading">DỊCH VỤ</div>
+                <a href="../html-PT/QLhlv.html" class="menu-item">Quản lý huấn luyện viên</a>
+                <a href="../html-PT/QLcatap.html" class="menu-item">Quản lý ca tập</a>
+              </div>
+              <!-- Cột Nhân viên -->
+              <div class="dropdown_menu-col">
+                <div class="menu-heading">NHÂN VIÊN</div>
+                <a href="../html-NhanVien/danhsach_nv.html" class="menu-item">Danh sách nhân viên</a>
+                <a href="../html-NhanVien/QL_calamviec.html" class="menu-item">Quản lý ca làm việc nhân
+                  viên</a>
+                <a href="../html-NhanVien/quantringuoidung.html" class="menu-item">Quản trị người
+                  dùng</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <nav class="nav-menu">
+        <ul>
+          <li class="user-profile-display" id="userProfile">
+            <div class="user-profile-content">
+              <div class="user-avatar">
+                <i class="fa-regular fa-user"></i>
+              </div>
+              <div class="user-info">
+                <div class="user-name" id="displayUserName"></div>
+                <div class="user-position" id="displayUserPosition"></div>
+              </div>
+              <i class="fa-solid fa-caret-down dropdown-icon"></i>
+            </div>
+            <div class="dropdown_menu" id="logoutDropdown">
+              <div class="dropdown_menu-col">
+                <a href="#" class="menu-item" id="logoutBtn">
+                  <i class="fa-solid fa-power-off"></i>
+                  <span>Đăng xuất</span>
+                </a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <!----------------------------------END HEAD------------------------------------>
+  <div class="container">
+    <!-- Header -->
+    <div class="main-header">
+      <h1>Số lượng đăng ký theo ngày</h1>
+      <button class="export-btn">
+        <i class="icon-export"></i>
+        Xuất file
+      </button>
+    </div>
+
+    <div class="content">
+      <!-- Left sidebar filters -->
+      <div class="sidebar">
+        <!-- Date filter -->
+        <div class="filter-section">
+          <div class="filter-header">
+            <span>Thời gian</span>
+          </div>
+          <div class="filter-body">
+            <div class="date-picker">
+              <input type="text" value="" readonly />
+              <i class="icon-calendar"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Data type filter -->
+        <div class="filter-section">
+          <div class="filter-header">
+            <span>Loại dữ liệu</span>
+          </div>
+          <div class="filter-body">
+            <div class="radio-option">
+              <input type="radio" id="member" name="dataType" checked />
+              <label for="member">Hội viên</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" id="revenue" name="dataType" />
+              <label for="revenue">Doanh thu</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Statistics type filter -->
+        <div class="filter-section">
+          <div class="filter-header">
+            <span>Loại Thống kê</span>
+          </div>
+          <div class="filter-body">
+            <div class="radio-option">
+              <input type="radio" id="byTime" name="statsType" checked />
+              <label for="byTime">Theo thời gian</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" id="byPackage" name="statsType" />
+              <label for="byPackage">Theo gói</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Package statistics type filter -->
+        <div class="filter-section">
+          <div class="filter-header">
+            <span>Loại thống kê gói</span>
+          </div>
+          <div class="filter-body">
+            <div class="radio-option">
+              <input type="radio" id="newReg" name="packageStatsType" checked />
+              <label for="newReg">Đăng ký mới</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" id="all" name="packageStatsType" />
+              <label for="all">Toàn bộ</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main content area -->
+      <div class="main-content">
+        <!-- Registration summary -->
+        <div class="summary-card">
+          <div class="summary-title">Số lượng đăng ký mới</div>
+          <div class="summary-value">0</div>
+          <div class="summary-action">
+            <button class="expand-btn"></button>
+          </div>
+        </div>
+
+        <!-- Chart area -->
+        <div class="chart-container">
+          <div class="chart-card">
+            <h2 class="chart-title">Số lượng Hội Viên theo Gói Dịch Vụ</h2>
+            <canvas id="membersChart"></canvas>
+          </div>
+
+          <div class="chart-card">
+            <h2 class="chart-title">Doanh Thu theo Gói Dịch Vụ</h2>
+            <canvas id="revenueChart"></canvas>
+          </div>
+        </div>
+        <!-- Registration timeline -->
+        <div class="section-header">
+          <h2>Số lượng đăng ký theo thời gian</h2>
+        </div>
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Ngày</th>
+                <th>Đăng ký Mới</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td colspan="2" class="no-data">Không có dữ liệu</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Detailed information by day -->
+        <div class="section-header">
+          <h2>Thông tin chi tiết theo ngày</h2>
+        </div>
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Hóa đơn</th>
+                <th>Mã KH</th>
+                <th>Khách hàng</th>
+                <th>Số ĐT</th>
+                <th>Gói cước</th>
+                <th>Giá</th>
+                <th>Bắt đầu</th>
+                <th>Kết thúc</th>
+                <th>Thao tác</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td colspan="8" class="no-data">Không có dữ liệu</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

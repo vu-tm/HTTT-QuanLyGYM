@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quản Lý Ca Tập</title>
+  <link rel="stylesheet" href="../../css/toast-message.css" />
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="../../css/css-PT/Qlhlv.css">
+</head>
+
+<body>
+  <div id="toast"></div>
+  <!----------------------------------BEGIN HEAD---------------------------------->
+  <header>
+    <div class="custom-menu">
+      <div class="logo">
+        <img src="../../img/fav-icon.png" alt="GYM" />
+      </div>
+      <nav class="nav-menu">
+        <ul>
+          <li><a href="../html-KhachHang/guest.html" class="nav-item"><i class="fa-solid fa-users"></i> Khách
+              hàng</a>
+          </li>
+          <li><a href="../html-BanHang/BanHang-admin.html" class="nav-item"><i class="fa-solid fa-cart-shopping"></i>
+              Bán hàng</a></li>
+          <li><a href="../html-PT/PT.html" class="nav-item"><i class="fa-solid fa-person"></i> PT</a></li>
+          <li class="has-dropdown">
+            <a href="#" class="nav-item"><i class="fa-solid fa-table"></i> Báo cáo</a>
+            <div class="dropdown_menu">
+              <!-- Cột Doanh thu -->
+              <div class="dropdown_menu-col">
+                <div class="menu-heading">DOANH THU</div>
+                <a href="../html-ThongKe/doanhthu-hoivien.html" class="menu-item">Báo cáo hội viên</a>
+                <a href="../html-ThongKe/doanhthu-banhang.html" class="menu-item">Báo cáo bán hàng</a>
+                <a href="../html-ThongKe/thongke.html" class="menu-item">Thống kê</a>
+              </div>
+              <!-- Cột Nhân viên -->
+              <div class="dropdown_menu-col">
+                <div class="menu-heading">NHÂN VIÊN</div>
+                <a href="../html-NhanVien/BC_buoidayPT.html" class="menu-item">Báo cáo/ Thống kê buổi
+                  dạy của PT theo lớp</a>
+                <a href="../html-NhanVien/BC_thongkePT.html" class="menu-item">Báo cáo thống kê PT</a>
+              </div>
+            </div>
+          </li>
+          <li class="has-dropdown">
+            <a href="#" class="nav-item"><i class="fa-solid fa-gear"></i> Cài đặt</a>
+            <div class="dropdown_menu">
+              <!-- Cột Bán hàng -->
+              <div class="dropdown_menu-col">
+                <div class="menu-heading">BÁN HÀNG</div>
+                <a href="../html-BanHang/nhaphang-admin.html" class="menu-item">Nhập hàng</a>
+                <a href="../html-BanHang/thongtin-khohang-admin.html" class="menu-item">Thông tin kho
+                  hàng</a>
+                <a href="../html-BanHang/ncc-admin.html"> Nhà cung cấp</a>
+                <a href="../html-BanHang/quanly-the-admin.html" class="menu-item">Quản lý thẻ</a>
+              </div>
+              <!-- Cột Dịch vụ -->
+              <div class="dropdown_menu-col">
+                <div class="menu-heading">DỊCH VỤ</div>
+                <a href="../html-PT/QLhlv.html" class="menu-item">Quản lý huấn luyện viên</a>
+                <a href="../html-PT/QLcatap.html" class="menu-item">Quản lý ca tập</a>
+              </div>
+              <!-- Cột Nhân viên -->
+              <div class="dropdown_menu-col">
+                <div class="menu-heading">NHÂN VIÊN</div>
+                <a href="../html-NhanVien/danhsach_nv.html" class="menu-item">Danh sách nhân viên</a>
+                <a href="../html-NhanVien/QL_calamviec.html" class="menu-item">Quản lý ca làm việc nhân
+                  viên</a>
+                <a href="../html-NhanVien/quantringuoidung.html" class="menu-item">Quản trị người
+                  dùng</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <nav class="nav-menu">
+        <ul>
+          <li class="user-profile-display" id="userProfile">
+            <div class="user-profile-content">
+              <div class="user-avatar">
+                <i class="fa-regular fa-user"></i>
+              </div>
+              <div class="user-info">
+                <div class="user-name" id="displayUserName"></div>
+                <div class="user-position" id="displayUserPosition"></div>
+              </div>
+              <i class="fa-solid fa-caret-down dropdown-icon"></i>
+            </div>
+            <div class="dropdown_menu" id="logoutDropdown">
+              <div class="dropdown_menu-col">
+                <a href="#" class="menu-item" id="logoutBtn">
+                  <i class="fa-solid fa-power-off"></i>
+                  <span>Đăng xuất</span>
+                </a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <!----------------------------------END HEAD------------------------------------>
+
+
+  <main>
+    <!-- Tìm kiếm -->
+    <div class="search-bar">
+      <input type="text" id="search-trainer" placeholder="Nhập nội dung tìm kiếm">
+      <button id="search-btn">Tìm kiếm</button>
+    </div>
+
+    <!-- Bảng danh sách HLV -->
+    <table id="trainer-table">
+      <thead>
+        <tr>
+          <th>Mã</th>
+          <th>Tên</th>
+          <th>Điện thoại</th>
+          <th>Trạng thái</th>
+          <th>Hành động</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Dữ liệu sẽ được thêm vào đây -->
+      </tbody>
+    </table>
+
+    <!-- Nút thêm PT -->
+    <button id="add-trainer-btn">Thêm PT</button>
+  </main>
+
+  <!-- Modal thêm PT -->
+  <div id="add-trainer-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h3>Thêm Huấn Luyện Viên</h3>
+      <form id="add-trainer-form" class="form-2col">
+        <div class="form-col">
+          <label for="trainer-code">Mã HLV:</label>
+          <input type="text" id="trainer-code" required>
+
+          <label for="trainer-name">Tên:</label>
+          <input type="text" id="trainer-name" required>
+
+          <label for="trainer-dob">Ngày sinh:</label>
+          <input type="date" id="trainer-dob" required>
+
+          <label for="trainer-sex">Giới tính:</label>
+          <select id="trainer-sex" required>
+            <option value="Nam">Nam</option>
+            <option value="Nữ">Nữ</option>
+          </select>
+
+          <label for="trainer-phone">Số điện thoại:</label>
+          <input type="text" id="trainer-phone" required>
+        </div>
+        <div class="form-col">
+          <label for="trainer-address">Địa chỉ:</label>
+          <input type="text" id="trainer-address" required>
+
+          <label for="trainer-email">Email:</label>
+          <input type="email" id="trainer-email">
+
+          <label for="trainer-status">Trạng thái:</label>
+          <select id="trainer-status" required>
+            <option value="Đang làm việc">Đang làm việc</option>
+            <option value="Đã nghỉ việc">Đã nghỉ việc</option>
+          </select>
+
+          <label for="trainer-contract">Loại hợp đồng:</label>
+          <select id="trainer-contract" required>
+            <option value="">Chọn loại hợp đồng</option>
+            <option value="Hợp đồng lao động">Hợp đồng lao động</option>
+            <option value="Hợp đồng thử việc">Hợp đồng thử việc</option>
+            <option value="Cộng tác viên">Cộng tác viên</option>
+            <option value="Thực tập">Thực tập</option>
+          </select>
+
+          <label for="trainer-salary">Lương:</label>
+          <input type="number" id="trainer-salary" required>
+        </div>
+        <button type="submit">Thêm</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="../../js/toast-message.js"></script>
+  <script src="../../js/js-PT/Qlhlv.js"></script>
+  <script src="../../js/index.js"></script>
+</body>
+
+</html>

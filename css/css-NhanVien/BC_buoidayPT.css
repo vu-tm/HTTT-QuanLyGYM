@@ -1,0 +1,281 @@
+
+.container {
+    display: flex;
+    gap: 20px;
+}
+
+/* Sidebar chính */
+.left_content {
+    width: 18%;
+    background: #fff;
+    padding: 10px;
+}
+
+/* Mỗi section trong sidebar */
+.section {
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 16px;
+    background: var(--blue);
+    color: white;
+}
+
+/* Tiêu đề mỗi mục */
+.text_sidebar {
+    padding: 4px 0px;
+}
+
+.section-header {
+    padding: 8px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Input tìm kiếm */
+.sidebar-input {
+    width: 100%;
+    margin-top: 5px;
+    border: none;
+    font-size: 16px;
+    padding: 12px;
+}
+
+/* Thời gian */
+.section-body {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 12px;
+    color: black;
+    justify-content: space-between;
+}
+
+.sidebar-date {
+    flex: 1;
+    border: none;
+    background: none;
+    font-size: 16px;
+}
+
+.calendar-icon {
+    font-size: 18px;
+    margin-left: 20%;
+}
+
+/* Select số bản ghi */
+.sidebar-select {
+    width: 100%;
+    padding: 4px;
+    margin-top: 5px;
+}
+
+.section-body input[type="text"],
+.section-body select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.section-body label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 16px;
+}
+
+.section-body input[type="checkbox"],
+.section-body input[type="radio"] {
+    margin-right: 4px;
+}
+
+/* Dropdown */
+.sidebar_menu select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Nội dung chính bên phải */
+.right_content {
+    flex: 1;
+    padding: 10px 20px;
+}
+
+.right_content h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+/* Bảng báo cáo */
+.report_table table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+.report_table th,
+.report_table td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+    font-style: normal;
+}
+
+.report_table th {
+    background-color: #f9f9f9;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Tăng cỡ chữ cho cột HLV */
+.report_table td:nth-child(1) {
+    font-size: 16px;
+}
+
+/* Xen kẽ màu nền cho các dòng */
+.report_table tbody tr:nth-child(odd) {
+    background-color: #FFFFFF;
+}
+
+.report_table tbody tr:nth-child(even) {
+    background-color: #F5F5F5;
+}
+
+/* Định dạng chiều rộng từng cột */
+th:nth-child(1),
+td:nth-child(1) {
+    width: 45%;
+}
+
+th:nth-child(2),
+td:nth-child(2) {
+    width: 45%;
+}
+
+th:nth-child(3),
+td:nth-child(3) {
+    width: 10%;
+}
+
+tbody tr td[colspan="3"] {
+    text-align: left;
+    width: 100%;
+}
+
+/* Header container */
+.header_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.title_header {
+    font-size: 24px;
+}
+
+.export_btn {
+    background-color: var(--green);
+    color: white;
+    font-size: 16px;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.export_btn:hover {
+    background-color: #218838;
+}
+
+/* Tắt hiệu ứng khi click vào input */
+.sidebar-input,
+.sidebar-date,
+.sidebar-select {
+    outline: none;
+    border: none;
+}
+
+.sidebar-input:focus,
+.sidebar-date:focus,
+.sidebar-select:focus {
+    outline: none;
+    border: none;
+    box-shadow: none;
+}
+
+/* Calendar */
+.daterangepicker {
+    transform: scale(0.95);
+    transform-origin: top left;
+    font-size: 14px;
+}
+
+.daterangepicker .drp-calendar {
+    width: 500px;
+}
+
+.daterangepicker .ranges {
+    width: 120px;
+}
+
+.daterangepicker td,
+.daterangepicker th {
+    padding: 4px 6px;
+}
+
+/* Phân trang */
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin: 20px auto;
+    width: fit-content;
+    font-family: Arial, sans-serif;
+    padding: 10px;
+    background: #f9f9f9;
+}
+
+.pagination-controls button {
+    background-color: var(--blue);
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.pagination-controls button:hover {
+    background-color: var(--blue);
+    opacity: 0.8;
+}
+
+.pagination-controls button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pagination-controls button:disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.pagination-controls #pageInfo {
+    font-size: 14px;
+    color: #333;
+    padding: 8px 12px;
+    background: white;
+    border-radius: 4px;
+    font-weight: 500;
+}

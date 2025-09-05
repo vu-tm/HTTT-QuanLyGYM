@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../../css/style.css" />
+  <link rel="stylesheet" href="../../css/toast-message.css" />
+  <link rel="stylesheet" href="../../css/css-NhanVien/BC_thongkePT.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- hiển thị lịch -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Moment.js -->
+  <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
+  <!-- Daterangepicker -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+  <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+  <!-- xuất file -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <title>FastFit</title>
+</head>
+
+<body>
+  <div id="toast"></div>
+  <!----------------------------------BEGIN HEAD---------------------------------->
+  <header>
+    <div class="custom-menu">
+      <div class="logo">
+        <img src="../../img/fav-icon.png" alt="GYM" />
+      </div>
+      <nav class="nav-menu">
+        <ul>
+          <li><a href="../html-KhachHang/guest.html" class="nav-item"><i class="fa-solid fa-users"></i> Khách
+              hàng</a>
+          </li>
+          <li><a href="../html-BanHang/BanHang-admin.html" class="nav-item"><i class="fa-solid fa-cart-shopping"></i>
+              Bán hàng</a></li>
+          <li><a href="../html-PT/PT.html" class="nav-item"><i class="fa-solid fa-person"></i> PT</a></li>
+          </li>
+          <li class="has-dropdown">
+            <a href="#" class="nav-item"><i class="fa-solid fa-table"></i> Báo cáo</a>
+            <div class="dropdown_menu">
+              <!-- Cột Doanh thu -->
+              <div class="dropdown_menu-col">
+                <div class="menu-heading">DOANH THU</div>
+                <a href="../html-ThongKe/doanhthu-hoivien.html" class="menu-item">Báo cáo hội viên</a>
+                <a href="../html-ThongKe/doanhthu-banhang.html" class="menu-item">Báo cáo bán hàng</a>
+                <a href="../html-ThongKe/thongke.html" class="menu-item">Thống kê</a>
+              </div>
+              <!-- Cột Nhân viên -->
+              <div class="dropdown_menu-col">
+                <div class="menu-heading">NHÂN VIÊN</div>
+                <a href="../html-NhanVien/BC_buoidayPT.html" class="menu-item">Báo cáo/ Thống kê buổi
+                  dạy của PT theo lớp</a>
+                <a href="../html-NhanVien/BC_thongkePT.html" class="menu-item">Báo cáo thống kê PT</a>
+              </div>
+            </div>
+          </li>
+          <li class="has-dropdown">
+            <a href="#" class="nav-item"><i class="fa-solid fa-gear"></i> Cài đặt</a>
+            <div class="dropdown_menu">
+              <!-- Cột Bán hàng -->
+              <div class="dropdown_menu-col">
+                <div class="menu-heading">BÁN HÀNG</div>
+                <a href="../html-BanHang/nhaphang-admin.html" class="menu-item">Nhập hàng</a>
+                <a href="../html-BanHang/thongtin-khohang-admin.html" class="menu-item">Thông tin kho
+                  hàng</a>
+                <a href="../html-BanHang/ncc-admin.html"> Nhà cung cấp</a>
+                <a href="../html-BanHang/quanly-the-admin.html" class="menu-item">Quản lý thẻ</a>
+              </div>
+              <!-- Cột Dịch vụ -->
+              <div class="dropdown_menu-col">
+                <div class="menu-heading">DỊCH VỤ</div>
+                <a href="../html-PT/QLhlv.html" class="menu-item">Quản lý huấn luyện viên</a>
+                <a href="../html-PT/QLcatap.html" class="menu-item">Quản lý ca tập</a>
+              </div>
+              <!-- Cột Nhân viên -->
+              <div class="dropdown_menu-col">
+                <div class="menu-heading">NHÂN VIÊN</div>
+                <a href="../html-NhanVien/danhsach_nv.html" class="menu-item">Danh sách nhân viên</a>
+                <a href="../html-NhanVien/QL_calamviec.html" class="menu-item">Quản lý ca làm việc nhân
+                  viên</a>
+                <a href="../html-NhanVien/quantringuoidung.html" class="menu-item">Quản trị người
+                  dùng</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <nav class="nav-menu">
+        <ul>
+          <li class="user-profile-display" id="userProfile">
+            <div class="user-profile-content">
+              <div class="user-avatar">
+                <i class="fa-regular fa-user"></i>
+              </div>
+              <div class="user-info">
+                <div class="user-name" id="displayUserName"></div>
+                <div class="user-position" id="displayUserPosition"></div>
+              </div>
+              <i class="fa-solid fa-caret-down dropdown-icon"></i>
+            </div>
+            <div class="dropdown_menu" id="logoutDropdown">
+              <div class="dropdown_menu-col">
+                <a href="#" class="menu-item" id="logoutBtn">
+                  <i class="fa-solid fa-power-off"></i>
+                  <span>Đăng xuất</span>
+                </a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <!----------------------------------END HEAD------------------------------------>
+
+  <!--------------------------------MAIN CONTENT-------------------------------->
+  <div class="container">
+    <!-- side bar -->
+    <div class="left_content">
+      <!-- Tìm theo PT -->
+      <div class="search_PT section">
+        <div class="section-header">Tìm theo PT </div>
+        <select id="search-type">
+          <option value="hlv">Tìm theo tên HLV</option>
+          <option value="status">Tìm theo trạng thái</option>
+        </select>
+
+        <!-- Phần lọc theo HLV -->
+        <div id="search-hlv" style="display: none; position: relative;">
+          <input type="text" id="hlv-search-input" placeholder="Nhập tên HLV..."
+            style="display: none; position: absolute; top: 0; left: 0; width: 100%; padding: 8px; box-sizing: border-box;" />
+        </div>
+
+
+        <div id="search-status" style="display: none;">
+          <div class="status-option">Đang thuê</div>
+          <div class="status-option">Đã chuyển</div>
+          <div class="status-option">Đã xong</div>
+          <div class="status-option">Hết hạn</div>
+        </div>
+
+        <!-- Hiển thị nhãn trạng thái đã chọn -->
+        <div id="selected-status-label" style="padding: 8px; font-size: 14px;"></div>
+      </div>
+
+      <!-- Thời gian -->
+      <div class="time section">
+        <div class="section-header">Thời gian <span class="calendar-icon">📅</span></div>
+        <input type="text" class="sidebar-date" value="01/03/2025 - 30/03/2025">
+      </div>
+
+      <!-- Loại lọc -->
+      <div class="sort section" id="filter-section">
+        <div class="section-header">Loại lọc </div>
+        <label class="option">
+          <input type="radio" name="filter" checked> <span>Theo ngày đăng ký HLV</span>
+        </label>
+        <label class="option">
+          <input type="radio" name="filter"> <span>Theo ngày hợp đồng</span>
+        </label>
+      </div>
+
+      <!-- Loại báo cáo -->
+      <div class="type_BC section">
+        <div class="section-header">Loại báo cáo </div>
+        <label class="option">
+          <input type="radio" name="report"> <span>Tổng quan hội viên đăng ký</span>
+        </label>
+        
+        <label class="option">
+          <input type="radio" name="report"> <span>Tổng hợp số buổi dạy</span>
+        </label>
+        <label class="option">
+          <input type="radio" name="report"> <span>Tổng quan lương HLV</span>
+        </label>
+      </div>
+
+      <!-- Lựa chọn hiển thị -->
+      <div class="show section">
+        <div class="section-header">Lựa chọn hiển thị </div>
+        <label style="margin: 8px;">Số bản ghi</label>
+        <select id="records">
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="20">30</option>
+          <option value="20">40</option>
+          <option value="50">50</option>
+        </select>
+      </div>
+
+      <!-- Tổng số bản ghi -->
+      <div class="Tong_BG section">
+        <div class="section-header">Tổng số bản ghi</div>
+        <p style="margin: 8px;">Tổng số: 0</p>
+      </div>
+    </div>
+
+
+    <!-- noi dung chinh -->
+    <div class="right_content">
+      <div class="header-container">
+        <div class="title_header" id="report-title">Chi tiết hội viên đăng ký</div>
+        <button class="export-btn">
+          <i class="fa-solid fa-file-export"></i> Xuất file
+        </button>
+      </div>
+      <div class="table-container">
+        <table>
+          <thead id="report-table-head">
+            <!-- nội dung tiêu đề sẽ thay đổi ở đây -->
+            <tr>
+              <th>STT</th>
+              <th>Nhóm PT</th>
+              <th>Khách hàng</th>
+              <th>HLV</th>
+              <th>Số buổi</th>
+              <th>Còn lại</th>
+              <th>Ngày hợp đồng</th>
+              <th>Ngày bắt đầu</th>
+              <th>Ngày kết thúc</th>
+              <th>Trạng thái</th>
+              <th>PT</th>
+              <th>Loại PT</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td colspan="12" class="no-data">Không tìm thấy bản ghi nào</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+  </div>
+  <script>
+    $(function () {
+      // Gắn lịch chọn ngày
+      $('.sidebar-date').daterangepicker({
+        autoUpdateInput: true,
+        locale: {
+          format: 'DD/MM/YYYY',
+          applyLabel: 'Xác nhận',
+          cancelLabel: 'Hủy',
+          daysOfWeek: ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'],
+          monthNames: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6',
+            'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
+          firstDay: 1
+        }
+      });
+    });
+    sessionStorage.setItem("visitedReport", "true");
+  </script>
+  <script src="../../js/js-NhanVien/BC_thongkePT.js"></script>
+  <script src="../../js/toast-message.js"></script>
+  <script src="../../js/index.js"></script>
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Báo cáo bán hàng</title>
+  <link rel="stylesheet" href="../../css/style.css" />
+  <link rel="stylesheet" href="../../css/css-ThongKe/thongke.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <!-- CSS thư viện ngoài -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/3.1/daterangepicker.min.css" />
+
+  <!-- JS thư viện ngoài -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/3.1/daterangepicker.min.js"></script>
+  <script src="../../js/js-ThongKe/thongke.js"></script>
+  <script src="../../js/index.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+
+<body>
+  <!----------------------------------BEGIN HEAD---------------------------------->
+  <header>
+    <div class="custom-menu">
+      <div class="logo">
+        <img src="../../img/fav-icon.png" alt="GYM" />
+      </div>
+      <nav class="nav-menu">
+        <ul>
+          <li><a href="../html-KhachHang/guest.html" class="nav-item"><i class="fa-solid fa-users"></i> Khách
+              hàng</a>
+          </li>
+          <li><a href="../html-BanHang/BanHang-admin.html" class="nav-item"><i class="fa-solid fa-cart-shopping"></i>
+              Bán hàng</a></li>
+          <li><a href="../html-PT/PT.html" class="nav-item"><i class="fa-solid fa-person"></i> PT</a></li>
+          <li class="has-dropdown">
+            <a href="#" class="nav-item"><i class="fa-solid fa-table"></i> Báo cáo</a>
+            <div class="dropdown_menu">
+              <!-- Cột Doanh thu -->
+              <div class="dropdown_menu-col">
+                <div class="menu-heading">DOANH THU</div>
+                <a href="../html-ThongKe/doanhthu-hoivien.html" class="menu-item">Báo cáo hội viên</a>
+                <a href="../html-ThongKe/doanhthu-banhang.html" class="menu-item">Báo cáo bán hàng</a>
+                <a href="../html-ThongKe/thongke.html" class="menu-item">Thống kê</a>
+              </div>
+              <!-- Cột Nhân viên -->
+              <div class="dropdown_menu-col">
+                <div class="menu-heading">NHÂN VIÊN</div>
+                <a href="../html-NhanVien/BC_buoidayPT.html" class="menu-item">Báo cáo/ Thống kê buổi
+                  dạy của PT theo lớp</a>
+                <a href="../html-NhanVien/BC_thongkePT.html" class="menu-item">Báo cáo thống kê PT</a>
+              </div>
+            </div>
+          </li>
+          <li class="has-dropdown">
+            <a href="#" class="nav-item"><i class="fa-solid fa-gear"></i> Cài đặt</a>
+            <div class="dropdown_menu">
+              <!-- Cột Bán hàng -->
+              <div class="dropdown_menu-col">
+                <div class="menu-heading">BÁN HÀNG</div>
+                <a href="../html-BanHang/nhaphang-admin.html" class="menu-item">Nhập hàng</a>
+                <a href="../html-BanHang/thongtin-khohang-admin.html" class="menu-item">Thông tin kho
+                  hàng</a>
+                <a href="../html-BanHang/ncc-admin.html"> Nhà cung cấp</a>
+                <a href="../html-BanHang/quanly-the-admin.html" class="menu-item">Quản lý thẻ</a>
+              </div>
+              <!-- Cột Dịch vụ -->
+              <div class="dropdown_menu-col">
+                <div class="menu-heading">DỊCH VỤ</div>
+                <a href="../html-PT/QLhlv.html" class="menu-item">Quản lý huấn luyện viên</a>
+                <a href="../html-PT/QLcatap.html" class="menu-item">Quản lý ca tập</a>
+              </div>
+              <!-- Cột Nhân viên -->
+              <div class="dropdown_menu-col">
+                <div class="menu-heading">NHÂN VIÊN</div>
+                <a href="../html-NhanVien/danhsach_nv.html" class="menu-item">Danh sách nhân viên</a>
+                <a href="../html-NhanVien/QL_calamviec.html" class="menu-item">Quản lý ca làm việc nhân
+                  viên</a>
+                <a href="../html-NhanVien/quantringuoidung.html" class="menu-item">Quản trị người
+                  dùng</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <nav class="nav-menu">
+        <ul>
+          <li class="user-profile-display" id="userProfile">
+            <div class="user-profile-content">
+              <div class="user-avatar">
+                <i class="fa-regular fa-user"></i>
+              </div>
+              <div class="user-info">
+                <div class="user-name" id="displayUserName"></div>
+                <div class="user-position" id="displayUserPosition"></div>
+              </div>
+              <i class="fa-solid fa-caret-down dropdown-icon"></i>
+            </div>
+            <div class="dropdown_menu" id="logoutDropdown">
+              <div class="dropdown_menu-col">
+                <a href="#" class="menu-item" id="logoutBtn">
+                  <i class="fa-solid fa-power-off"></i>
+                  <span>Đăng xuất</span>
+                </a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <!----------------------------------END HEAD------------------------------------>
+
+  <!-- Tab Menu -->
+  <div class="tab-menu">
+    <div class="tab-item active" data-tab="overview">Tổng quan</div>
+    <div class="tab-item" data-tab="revenue">Doanh thu</div>
+
+  </div>
+
+  <!-- Dashboard Content -->
+  <div class="dashboard">
+    <div id="overview-content">
+      <!-- Stats Overview -->
+      <div class="stats-container" id="statsContainer">
+        <!-- Stats cards will be loaded dynamically -->
+      </div>
+
+      <!-- Revenue Chart -->
+      <div class="chart-container">
+        <h2>Thống kê doanh thu </h2>
+        <canvas id="revenueChart"></canvas>
+      </div>
+
+      <!-- Revenue Table -->
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Ngày</th>
+              <th>Vốn</th>
+              <th>Doanh thu</th>
+              <th>Lợi nhuận</th>
+            </tr>
+          </thead>
+          <tbody id="revenueTableBody">
+            <!-- Table data will be loaded dynamically -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div id="revenue-content" class="filter-panel">
+      <div class="tabs">
+        <div class="tab active" data-tab="year">Thống kê theo năm</div>
+        <div class="tab" data-tab="month">Thống kê từng tháng trong năm</div>
+      </div>
+
+      <div class="filter-panel-inner">
+        <div class="date-filter">
+          <span>Từ năm</span>
+          <input type="text" id="fromYear" class="year-input" />
+          <span>Đến năm</span>
+          <input type="text" id="toYear" class="year-input" />
+        </div>
+        <div class="buttons">
+          <button id="btnStatistic" class="btn btn-primary">Thống kê</button>
+          <button id="btnReset" class="btn btn-secondary">Làm mới</button>
+          <button id="btnExport" class="btn btn-success">Xuất excel</button>
+        </div>
+      </div>
+
+      <div class="chart-container">
+        <canvas id="financialChart"></canvas>
+      </div>
+
+      <div class="data-table">
+        <table id="financialTable">
+          <thead>
+            <tr>
+              <th>Năm</th>
+              <th>Vốn</th>
+              <th>Doanh thu</th>
+              <th>Lợi nhuận</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Data will be populated by JavaScript -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    </div>
+  </div>
+</body>
+
+</html>

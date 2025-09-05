@@ -1,0 +1,1026 @@
+/* Các style hiện có của bạn */
+.container {
+    display: flex;
+}
+
+/* left content */
+.left_content {
+    width: 18%;
+    background: #fff;
+    padding: 10px;
+}
+
+.section {
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 16px;
+}
+
+.section-header {
+    background: var(--blue);
+    color: #fff;
+    padding: 8px 10px;
+    font-weight: bold;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.section-body {
+    padding: 8px;
+}
+
+.section-body input[type="text"],
+.section-body select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.section-body label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.section-body input[type="checkbox"],
+.section-body input[type="radio"] {
+    margin-right: 4px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+/* right content */
+.right_content {
+    flex: 1;
+    padding: 8px 20px;
+    overflow-x: auto;
+}
+
+.header_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.header_container .title_header {
+    font-size: 24px;
+}
+
+.actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.header_container .actions button {
+    background: var(--green);
+    color: white;
+    padding: 12px 16px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+}
+
+table th {
+    background: #f8f9fa;
+    color: #333;
+    font-weight: bold;
+    padding: 12px 8px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+    border-right: 1px solid #e0e0e0;
+}
+
+table td {
+    padding: 10px 8px;
+    border-bottom: 1px solid #e0e0e0;
+    border-right: 1px solid #e0e0e0;
+    text-align: left;
+    color: #333;
+    vertical-align: middle;
+    line-height: 1.5;
+}
+
+table th:last-child,
+table td:last-child {
+    border-right: none;
+}
+
+table tbody tr:nth-child(odd) {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+table tbody tr:nth-child(even) {
+    background: #fff;
+}
+
+table tbody tr:hover {
+    background: #e6f3ff;
+}
+
+/* Định dạng cột Hành động */
+.action-icons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.action-icons i {
+    font-size: 16px;
+    cursor: pointer;
+    padding: 5px 0px;
+    transition: transform 0.2s ease;
+    line-height: 1;
+}
+
+.action-icons i.fa-eye {
+    color: var(--blue);
+}
+
+.action-icons i.fa-eye:hover {
+    color: var(--blue);
+    transform: scale(1.2);
+}
+
+.action-icons i.fa-cog {
+    color: #6c757d;
+}
+
+.action-icons i.fa-cog:hover {
+    color: #5a6268;
+    transform: scale(1.2);
+}
+
+.action-icons i.fa-trash {
+    color: var(--red);
+}
+
+.action-icons i.fa-trash:hover {
+    color: var(--red);
+    transform: scale(1.2);
+}
+
+.action-icons i:hover {
+    transform: scale(1.2);
+}
+
+/* Định dạng nút trạng thái */
+table td:nth-child(7) span {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    min-width: 80px;
+    line-height: 1.5;
+}
+
+
+/* Trạng thái Nghỉ việc */
+.status-resigned {
+    background: var(--red);
+    color: #fff;
+    padding: 6px;
+    border-radius: 50px;
+}
+
+/* Định dạng thông điệp không có dữ liệu */
+.no-data {
+    text-align: center;
+    font-style: italic;
+    color: #888;
+    padding: 20px;
+    background: #f0f0f0;
+}
+
+
+
+/* modal thêm nhân viên */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 5;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: auto;
+}
+
+.modal-box {
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 60%;
+    max-width: 90%;
+    position: relative;
+    transform: scale(0.8);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.15s ease;
+    pointer-events: auto;
+    z-index: 10;
+}
+
+.modal-open .modal-box {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.modal-open {
+    opacity: 1;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 16px;
+    background: var(--blue);
+    color: #fff;
+    padding: 20px 16px;
+}
+
+.modal-header span {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #fff;
+}
+
+.modal-body {
+    max-height: 500px;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-col {
+    flex: 1;
+}
+
+.form-item {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+
+.form-item label {
+    width: 150px;
+    font-weight: normal;
+    color: #333;
+    font-size: 14px;
+}
+
+.form-item input,
+.form-item select {
+    flex: 1;
+    padding: 8px 0;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    border-radius: 0;
+    font-size: 14px;
+    background: transparent;
+    transition: border-bottom-color 0.3s ease;
+}
+
+.form-item input[type="file"] {
+    padding: 4px 0;
+    border: none;
+    background: transparent;
+}
+
+.form-item input:focus,
+.form-item select:focus {
+    border-bottom-color: var(--blue);
+    outline: none;
+    box-shadow: none;
+}
+
+.form-item select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: transparent;
+    padding-right: 20px;
+}
+
+.form-item select option {
+    color: #666;
+    background: #fff;
+}
+
+.form-item select:not(:focus):not([value=""]) {
+    color: #666;
+}
+
+.form-item .icon-btn {
+    background: transparent;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    color: #666;
+}
+
+.form-item .status-btn {
+    padding: 8px 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    background: #fff;
+    color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.form-item .status-btn.active {
+    background: var(--green);
+    color: #fff;
+    border-color: var(--green);
+}
+
+.form-item .status-btn.active[data-status="Đang làm"] {
+    background: var(--blue);
+    color: #fff;
+    border-color: var(--blue);
+}
+
+.form-item .status-btn.active[data-status="Nghỉ việc"] {
+    background: var(--red);
+    color: #fff;
+    border-color: var(--red);
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    padding: 16px;
+}
+
+.modal-footer .btn-submit {
+    background: var(--green);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.modal-footer .btn-cancel {
+    background: var(--red);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.modal-footer .btn-submit:hover {
+    background: var(--green);
+}
+
+.modal-footer .btn-cancel:hover {
+    background: var(--red);
+}
+
+/* Custom Alert */
+.custom-alert {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.custom-alert.modal-open {
+    opacity: 1;
+    display: flex;
+}
+
+.custom-alert-box {
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    max-width: 90%;
+    position: relative;
+    transform: scale(0.8);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.custom-alert.modal-open .custom-alert-box {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.custom-alert-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--red);
+    color: #fff;
+    padding: 10px 16px;
+    border-bottom: 1px solid #ddd;
+}
+
+.custom-alert-header span {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.custom-alert-body {
+    padding: 20px;
+    font-size: 14px;
+    color: #333;
+    line-height: 1.5;
+}
+
+.custom-alert-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 16px;
+    border-top: 1px solid #ddd;
+}
+
+.custom-alert-footer .btn-ok {
+    background: var(--blue);
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.custom-alert-footer .btn-ok:hover {
+    background: var(--blue);
+}
+
+/* Modal hiển thị thông tin nhân viên */
+#employeeInfoModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#employeeInfoModal.modal-open {
+    opacity: 1;
+}
+
+#employeeInfoModal .modal-box {
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 50%;
+    max-width: 60%;
+    position: relative;
+    transform: scale(0.8);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+#employeeInfoModal.modal-open .modal-box {
+    transform: scale(1);
+    opacity: 1;
+}
+
+#employeeInfoModal .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 16px;
+    background: var(--blue);
+    color: #fff;
+    padding: 20px 16px;
+}
+
+#employeeInfoModal .modal-header span {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#employeeInfoModal .modal-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    position: fixed;
+    color: #fff;
+    right: 32px;
+}
+
+#employeeInfoModal .modal-body {
+    max-height: 500px;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.employee-info-container {
+    display: flex;
+    gap: 20px;
+}
+
+.employee-photo {
+    flex: 0 0 150px;
+}
+
+#employeePhoto.photo-placeholder {
+    width: 150px;
+    height: 150px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background: #f0f0f0;
+}
+
+.employee-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.info-item label {
+    width: 150px;
+    font-weight: normal;
+    color: #333;
+    font-size: 14px;
+}
+
+.info-item span {
+    flex: 1;
+    font-size: 14px;
+    color: #333;
+}
+
+#employeeInfoModal .modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    padding: 16px;
+}
+
+#employeeInfoModal .modal-footer .btn-cancel {
+    background: var(--red);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#employeeInfoModal .modal-footer .btn-cancel:hover {
+    background: var(--red);
+}
+
+
+
+
+/* Modal thêm ca làm việc nhân viên */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.modal-overlay.modal-open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    background: #fff;
+    width: 50%;
+    max-width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.actions {
+    margin-bottom: 16px;
+}
+
+.create-btn {
+    background: var(--green);
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+.create-btn:hover {
+    background: var(--green);
+}
+
+.shift-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+}
+
+.shift-table th,
+.shift-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.shift-table th {
+    background: #f8f9fa;
+    font-weight: 600;
+}
+
+.shift-table .action-icons i {
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.shift-table .fa-eye {
+    color: var(--blue);
+}
+
+.shift-table .fa-trash {
+    color: var(--red);
+}
+
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.modal-footer {
+    padding: 16px 20px;
+    border-top: 1px solid #eee;
+    text-align: right;
+}
+
+.save-btn {
+    background: var(--blue);
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    margin-left: 10px;
+    border-radius: 4px;
+}
+
+.save-btn:hover {
+    background: var(--blue);
+}
+
+.cancel-btn {
+    background: #6c757d;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.cancel-btn:hover {
+    background: #5a6268;
+}
+
+.form-item {
+    margin-bottom: 15px;
+}
+
+.form-item label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.form-item input,
+.form-item select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form-item .required {
+    color: var(--red);
+}
+
+/* Custom Alert cho xác nhận xóa */
+#deleteConfirmAlert {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 6;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#deleteConfirmAlert.modal-open {
+    opacity: 1;
+    display: flex;
+}
+
+#deleteConfirmAlert .custom-alert-box {
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    max-width: 90%;
+    position: relative;
+    transform: scale(0.8);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+#deleteConfirmAlert.modal-open .custom-alert-box {
+    transform: scale(1);
+    opacity: 1;
+}
+
+#deleteConfirmAlert .custom-alert-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--blue);
+    color: #fff;
+    padding: 10px 16px;
+    border-bottom: 1px solid #ddd;
+}
+
+#deleteConfirmAlert .custom-alert-header span {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#deleteConfirmAlert .custom-alert-body {
+    padding: 12px;
+    font-size: 14px;
+    color: #333;
+    line-height: 1.5;
+    width: fit-content;
+    text-align: center;
+}
+
+#deleteConfirmAlert .custom-alert-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 16px;
+    border-top: 1px solid #ddd;
+    gap: 10px;
+}
+
+#deleteConfirmAlert .custom-alert-footer .btn-ok {
+    background: var(--green);
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    border-radius: 4px;
+}
+
+#deleteConfirmAlert .custom-alert-footer .btn-ok:hover {
+    background: var(--green);
+}
+
+#deleteConfirmAlert .custom-alert-footer .btn-cancel {
+    background: var(--red);
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    border-radius: 4px;
+}
+
+#deleteConfirmAlert .custom-alert-footer .btn-cancel:hover {
+    background: var(--red);
+}
+
+
+
+
+/* Định dạng nút xuất và nhập trong .actions */
+.actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.actions .export-btn,
+.actions .import-label {
+    background: var(--blue);
+    color: #fff;
+    padding: 12px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.actions .import-label {
+    background: var(--green);
+}
+
+.actions .import-label:hover {
+    background: var(--green);
+}
+
+.actions .import-btn {
+    display: none;
+}
+
+.actions button,
+.actions .export-btn,
+.actions .import-label {
+    height: 40px;
+    line-height: 1.5;
+}
+
+
+/* Thêm các style cho trạng thái */
+.status-working {
+    background: var(--blue);
+    color: #fff;
+    padding: 5px;
+    border-radius: 12px;
+    font-size: 10px;
+}
+
+.status-resigned {
+    background: var(--red);
+    color: #fff;
+    padding: 5p;
+    border-radius: 12px;
+    font-size: 10px;
+}
+
+.shift-delete-icon{
+    padding-left: 45%;
+}
+.shift-delete-icon:hover {
+    color: #fff;
+    transform: scale(1.05);
+}
+
+/* left-content: bộ lọc trạng thái bảng nhân viên */
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 24px;
+}
+
+.pagination-controls button {
+    background: var(--blue);
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.pagination-controls button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.pagination-controls #pageInfo {
+    font-size: 14px;
+    color: #333;
+}
+
+/* Định dạng chân trang */
+.footer-note {
+    font-size: 16px;
+    margin-top: 10px;
+    color: var(--blue);
+    font-weight: bold;
+    text-align: right;
+}

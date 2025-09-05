@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../../css/css-ThongKe/soquy.css">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="../../js/js-ThongKe/soquy.js"></script>
+  <script src="../../js/index.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+  <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
+  <title>FastFit</title>
+</head>
+
+<body>
+  <!----------------------------------BEGIN HEAD---------------------------------->
+  <header>
+    <div class="custom-menu">
+      <div class="logo">
+        <img src="../../img/fav-icon.png" alt="GYM" />
+      </div>
+      <nav class="nav-menu">
+        <ul>
+          <li><a href="../html-KhachHang/guest.html" class="nav-item"><i class="fa-solid fa-users"></i> Khách
+              hàng</a>
+          </li>
+          <li><a href="../html-BanHang/BanHang-admin.html" class="nav-item"><i class="fa-solid fa-cart-shopping"></i>
+              Bán hàng</a></li>
+          <li><a href="../html-PT/PT.html" class="nav-item"><i class="fa-solid fa-person"></i> PT</a></li>
+          <li><a href="../html-ThongKe/soquy.html" class="nav-item"><i class="fa-solid fa-dollar-sign"></i> Sổ quỹ</a>
+          </li>
+          <li class="has-dropdown">
+            <a href="#" class="nav-item"><i class="fa-solid fa-table"></i> Báo cáo</a>
+            <div class="dropdown_menu">
+              <!-- Cột Doanh thu -->
+              <div class="dropdown_menu-col">
+                <div class="menu-heading">DOANH THU</div>
+                <a href="../html-ThongKe/doanhthu-hoivien.html" class="menu-item">Báo cáo hội viên</a>
+                <a href="../html-ThongKe/doanhthu-tonghop.html" class="menu-item">Báo cáo tổng hợp</a>
+                <a href="../html-ThongKe/doanhthu-banhang.html" class="menu-item">Báo cáo bán hàng</a>
+                <a href="../html-ThongKe/doanhthu-pt.html" class="menu-item">Doanh thu PT</a>
+                <a href="../html-ThongKe/thongke.html" class="menu-item">Thống kê</a>
+              </div>
+              <!-- Cột Nhân viên -->
+              <div class="dropdown_menu-col">
+                <div class="menu-heading">NHÂN VIÊN</div>
+                <a href="../html-NhanVien/BC_buoidayPT.html" class="menu-item">Báo cáo/ Thống kê buổi
+                  dạy của PT theo lớp</a>
+                <a href="../html-NhanVien/BC_thongkePT.html" class="menu-item">Báo cáo thống kê PT</a>
+              </div>
+            </div>
+          </li>
+          <li class="has-dropdown">
+            <a href="#" class="nav-item"><i class="fa-solid fa-gear"></i> Cài đặt</a>
+            <div class="dropdown_menu">
+              <!-- Cột Bán hàng -->
+              <div class="dropdown_menu-col">
+                <div class="menu-heading">BÁN HÀNG</div>
+                <a href="../html-BanHang/nhaphang-admin.html" class="menu-item">Nhập hàng</a>
+                <a href="../html-BanHang/thongtin-khohang-admin.html" class="menu-item">Thông tin kho
+                  hàng</a>
+                <a href="../html-BanHang/ncc-admin.html"> Nhà cung cấp</a>
+                <a href="../html-BanHang/quanly-the-admin.html" class="menu-item">Quản lý thẻ</a>
+              </div>
+              <!-- Cột Dịch vụ -->
+              <div class="dropdown_menu-col">
+                <div class="menu-heading">DỊCH VỤ</div>
+                <a href="../html-PT/QLhlv.html" class="menu-item">Quản lý huấn luyện viên</a>
+                <a href="../html-PT/QLcatap.html" class="menu-item">Quản lý ca tập</a>
+              </div>
+              <!-- Cột Nhân viên -->
+              <div class="dropdown_menu-col">
+                <div class="menu-heading">NHÂN VIÊN</div>
+                <a href="../html-NhanVien/danhsach_nv.html" class="menu-item">Danh sách nhân viên</a>
+                <a href="../html-NhanVien/QL_calamviec.html" class="menu-item">Quản lý ca làm việc nhân
+                  viên</a>
+                <a href="../html-NhanVien/quantringuoidung.html" class="menu-item">Quản trị người
+                  dùng</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <nav class="nav-menu">
+        <ul>
+          <li class="user-profile-display" id="userProfile">
+            <div class="user-profile-content">
+              <div class="user-avatar">
+                <i class="fa-regular fa-user"></i>
+              </div>
+              <div class="user-info">
+                <div class="user-name" id="displayUserName"></div>
+                <div class="user-position" id="displayUserPosition"></div>
+              </div>
+              <i class="fa-solid fa-caret-down dropdown-icon"></i>
+            </div>
+            <div class="dropdown_menu" id="logoutDropdown">
+              <div class="dropdown_menu-col">
+                <a href="#" class="menu-item" id="logoutBtn">
+                  <i class="fa-solid fa-power-off"></i>
+                  <span>Đăng xuất</span>
+                </a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <!----------------------------------END HEAD------------------------------------>
+
+  <!--------------------------------MAIN CONTENT-------------------------------->
+  <div class="container">
+    <div class="row">
+      <!-- Sidebar left -->
+      <div class="col-md-3 sidebar">
+        <h5 class="main-tt-new mb-3 mt-4">Sổ quỹ</h5>
+        <div class="summary-section mb-4">
+          <div class="summary-item active" data-tab="cash">
+            <span>Tiền Mặt</span>
+            <span class="text-success"></span>
+          </div>
+          <div class="summary-item" data-tab="bank">
+            <span>Ngân Hàng</span>
+            <span class="text-primary"></span>
+          </div>
+          <div class="summary-item" data-tab="total">
+            <span>Tổng Quỹ</span>
+          </div>
+        </div>
+
+        <div class="tab-content">
+          <!-- Khối Thời gian (giữ nguyên cho tất cả các tab) -->
+          <div class="form-sub-lsb form-group">
+            <div class="title-sub-lsb chude01">Thời gian</div>
+            <div class="row" style="padding-left: 15px; padding-right: 15px;">
+              <div class="col-sm-12 form-group">
+                <div class="input-group date-input-group">
+                  <input type="text" id="date-range" class="form-control date-range" value="01/04/2025 - 06/04/2025"
+                    readonly />
+                  <span class="input-group-text"><i class="fa-solid fa-calendar-days"></i></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Khối Bộ lọc tìm kiếm -->
+          <div class="form-sub-lsb form-group">
+            <div class="title-sub-lsb chude1">Bộ lọc tìm kiếm</div>
+            <!-- Tài khoản ngân hàng (chỉ hiển thị cho tab Ngân Hàng) -->
+            <div id="bank-section" class="col-sm-12 font-size-14 bank-account-section" style="display: none;">
+              <label class="col-form-label font-weight-bold">Tài khoản ngân hàng</label>
+              <div id="bank-filter-container" class="custom-filter-container">
+                <div id="bank-dropdown-toggle" class="custom-filter-selected">
+                  <span id="selected-bank-account">Chọn ngân hàng</span>
+                  <span class="dropdown-icon"><i class="fa-solid fa-angle-down"></i></span>
+                </div>
+                <div id="bank-dropdown-menu" class="custom-filter-dropdown">
+                  <div class="filter-item" data-value="account">Chọn ngân hàng</div>
+                  <div class="filter-item" data-value="account1">Ngân hàng 1</div>
+                  <div class="filter-item" data-value="account2">Ngân hàng 2</div>
+                  <div class="filter-item" data-value="account3">Ngân hàng 3</div>
+                </div>
+              </div>
+              <div class="mt-2">
+                <div class="input-group">
+                  <input type="text" class="form-control" id="bank-account-number" placeholder="Nhập số tài khoản">
+                </div>
+              </div>
+            </div>
+
+            <!-- Loại chứng từ -->
+            <div class="col-sm-12 font-size-14">
+              <label for="chon-1" class="col-form-label font-weight-bold">Loại chứng từ</label>
+              <div class="list-btn-choose" id="chon-1">
+                <button class="list-btn-choose active" data-type="all">Tất cả</button>
+                <button class="list-btn-choose" data-type="phieuThu">Phiếu thu</button>
+                <button class="list-btn-choose" data-type="phieuChi">Phiếu chi</button>
+              </div>
+            </div>
+
+            <!-- Trạng thái -->
+            <div class="col-sm-12 font-size-14 mt-3">
+              <label class="col-form-label font-weight-bold">Trạng thái</label>
+              <div class="custom-filter-container" id="status-filter">
+                <div class="custom-filter-selected">
+                  <span id="selected-status">Đã thanh toán</span>
+                  <span class="dropdown-icon"><i class="fa-solid fa-angle-down"></i></span>
+                </div>
+                <div class="custom-filter-dropdown">
+                  <div class="filter-item" data-value="all">Tất cả</div>
+                  <div class="filter-item" data-value="paid">Đã thanh toán</div>
+                  <div class="filter-item" data-value="unpaid">Chưa thanh toán</div>
+                  <div class="filter-item" data-value="pending">Đang chờ</div>
+                </div>
+                <button class="clear-filter-btn" id="clear-status"></i></button>
+              </div>
+            </div>
+
+
+            <!-- Loại thu chi -->
+            <div class="col-sm-12 font-size-14 mt-3">
+              <label for="filter-category" class="col-form-label font-weight-bold">Loại thu chi</label>
+              <div class="filter-category-container" id="filter-category">
+                <div class="filter-category-selected">
+                  <span id="selected-category">Tất cả</span>
+                  <span class="dropdown-icon"><i class="fa-solid fa-angle-down"></i></span>
+                </div>
+                <div class="filter-category-dropdown">
+                  <!-- Nội dung sẽ được cập nhật động bằng JavaScript -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Nút áp dụng lọc -->
+            <div class="col-sm-12 mt-4 mb-3">
+              <button class="btn btn-primary btn-apply-filter">Áp dụng bộ lọc</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- Phần nội dung chính (Main content) -->
+      <div class="col-md-9">
+        <!-- Thanh công cụ trên cùng -->
+        <div class="top-action-bar">
+          <div class="search-bar">
+            <div class="input-group">
+              <select class="form-control">
+                <option>Mã phiếu</option>
+                <option>Người nộp/nhận</option>
+                <option>Ghi chú</option>
+              </select>
+              <input type="text" class="form-control" placeholder="Tìm kiếm">
+            </div>
+          </div>
+
+          <div class="action-buttons">
+            <button class="btn btn-success">
+              <i class="fa-solid fa-plus"></i> Phiếu thu
+            </button>
+            <button class="btn btn-success">
+              <i class="fa-solid fa-minus"></i> Phiếu chi
+            </button>
+            <button class="btn btn-light">
+              <i class="fa-solid fa-file-export"></i> Xuất file
+            </button>
+            <div class="dropdown">
+              <button class="btn btn-light dropdown-toggle">
+                <i class="fa-solid fa-th"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Thẻ tổng hợp số liệu -->
+        <div class="summary-cards">
+          <div class="summary-card">
+            <div class="icon-section">
+              <i class="fa-solid fa-arrow-down text-success"></i>
+            </div>
+            <div class="info-section">
+              <span class="label">Tổng thu</span>
+              <span class="value" id="total-income">0</span>
+            </div>
+          </div>
+
+          <div class="summary-card">
+            <div class="icon-section">
+              <i class="fa-solid fa-arrow-up text-danger"></i>
+            </div>
+            <div class="info-section">
+              <span class="label">Tổng chi</span>
+              <span class="value" id="total-expense">0</span>
+            </div>
+          </div>
+
+          <div class="summary-card">
+            <div class="icon-section">
+              <i class="fa-solid fa-calculator text-primary"></i>
+            </div>
+            <div class="info-section">
+              <span class="label">Phát sinh</span>
+              <span class="value" id="total-balance">0</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bảng dữ liệu chính -->
+        <div class="data-table-container">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Mã phiếu</th>
+                <th>Thời gian</th>
+                <th>Loại thu chi</th>
+                <th>Người nộp/nhận</th>
+                <th>Ghi chú</th>
+                <th>Giá trị</th>
+                <th>Trạng thái</th>
+                <th>Thao tác</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="no-data">
+                <td colspan="8">Không có dữ liệu phù hợp</td>
+              </tr>
+              <!-- Dữ liệu sẽ được thêm vào đây bằng JavaScript -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Phần phân trang -->
+        <div class="pagination-container">
+          <div class="record-info">
+            Tổng số bản ghi: <strong id="total-records">0</strong>
+          </div>
+          <div class="page-size-selector">
+            <span>Số bản ghi:</span>
+            <select class="form-control">
+              <option>10</option>
+              <option>20</option>
+              <option>50</option>
+              <option>100</option>
+            </select>
+          </div>
+          <div class="pagination-controls">
+            <button class="btn btn-sm btn-light" disabled>
+              <i class="fa-solid fa-angle-left"></i>
+            </button>
+            <span class="current-page">1</span>
+            <button class="btn btn-sm btn-light" disabled>
+              <i class="fa-solid fa-angle-right"></i>
+            </button>
+          </div>
+        </div>
+        <!-- Modal Chỉnh Sửa -->
+        <div id="editModal" class="modal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Chỉnh sửa phiếu thu chi</h5>
+              <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+              <form id="editForm">
+                <div class="form-group">
+                  <label for="editMaPhieu">Mã phiếu</label>
+                  <input type="text" class="form-control" id="editMaPhieu" readonly>
+                </div>
+                <div class="form-group">
+                  <label for="editThoiGian">Thời gian</label>
+                  <input type="text" class="form-control" id="editThoiGian">
+                </div>
+                <div class="form-group">
+                  <label for="editLoaiThuChi">Loại thu chi</label>
+                  <select class="form-control" id="editLoaiThuChi">
+                    <option>Thu bán hàng</option>
+                    <option>Thu đối tác</option>
+                    <option>Thu khác</option>
+                    <option>Chi tiền lương</option>
+                    <option>Chi đối tác</option>
+                    <option>Chi đầu tư văn phòng</option>
+                    <option>Chi tiêu khác</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="editNguoiNopNhan">Người nộp/nhận</label>
+                  <input type="text" class="form-control" id="editNguoiNopNhan">
+                </div>
+                <div class="form-group">
+                  <label for="editGhiChu">Ghi chú</label>
+                  <textarea class="form-control" id="editGhiChu"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="editGiaTri">Giá trị</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <select id="editGiaTriType">
+                          <option value="+">+</option>
+                          <option value="-">-</option>
+                        </select>
+                      </span>
+                    </div>
+                    <input type="text" class="form-control" id="editGiaTri">
+                    <div class="input-group-append">
+                      <span class="input-group-text">VND</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="editTrangThai">Trạng thái</label>
+                  <select class="form-control" id="editTrangThai">
+                    <option>Đã thanh toán</option>
+                    <option>Chưa thanh toán</option>
+                    <option>Đang chờ</option>
+                  </select>
+                </div>
+                <div class="form-actions">
+                  <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+                  <button type="button" class="btn btn-light" id="cancelEdit">Hủy</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+
+  </div>
+  </div>
+  </div>
+
+
+</body>
+
+</html>

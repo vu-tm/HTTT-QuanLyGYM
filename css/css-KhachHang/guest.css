@@ -1,0 +1,310 @@
+/* ==== Layout chính ==== */
+.main-content {
+    padding: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fff;
+    min-height: 100vh;
+  }
+  
+  /* ==== Tiêu đề ==== */
+  .dashboard-section h1 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+  
+  /* ==== Hàng nút hành động ==== */
+  .actions {
+    margin-bottom: 20px;
+  }
+  
+  .actions .btn-add,
+  .actions .btn-search {
+    padding: 10px 16px;
+    margin-right: 10px;
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .btn-add i,
+  .btn-search i {
+    margin-right: 11px; /*khoảng cách icon và nội dung*/
+  }
+  .actions .btn-add:hover,
+  .actions .btn-search:hover {
+    background-color: #0056b3;
+  }
+  
+  /* ==== Bảng ==== */
+  .customer-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+  }
+  
+  .customer-table thead {
+    background-color: #00a8e3;
+    color: #fff;
+  }
+  
+  .customer-table th,
+  .customer-table td {
+    padding: 14px 12px;
+    text-align: center;
+    border-bottom: 1px solid #eaeaea;
+  }
+  
+  
+  /* ==== Trạng thái ==== */
+  .status {
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    display: inline-block;
+  }
+  
+  .status.active {
+    background-color: #d4edda;
+    color: #28a745;
+  }
+  
+  .status.expired {
+    background-color: #f8d7da;
+    color: #dc3545;
+  }
+  
+  /* ==== Nút thao tác ==== */
+  .btn-edit,
+  .btn-delete {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    margin: 0 6px;
+    color: #444;
+    transition: color 0.3s;
+  }
+  
+  .btn-edit:hover {
+    color: #007bff;
+  }
+  
+  .btn-delete:hover {
+    color: #dc3545;
+  }
+  
+  /* ==== Responsive ==== */
+  @media (max-width: 768px) {
+    .customer-table th,
+    .customer-table td {
+      padding: 10px 6px;
+      font-size: 13px;
+    }
+  
+    .actions .btn-add,
+    .actions .btn-search {
+      font-size: 12px;
+      padding: 8px 12px;
+    }
+  
+    .dashboard-section h1 {
+      font-size: 22px;
+    }
+  }
+
+/* ======================================== Form chỉnh sửa ========================= */
+  /* Đảm bảo form không quá rộng so với màn hình */
+  #edit-form {
+    display: block;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 700px;
+    width: 90%;
+    max-height: 500px; /* Giới hạn chiều cao tối đa */
+    overflow-y: auto;   /* Thêm cuộn dọc nếu nội dung vượt quá */
+    box-sizing: border-box;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  #edit-form::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  #edit-form::-webkit-scrollbar-thumb {
+    background-color: #aaa;
+    border-radius: 4px;
+  }
+  
+  #edit-form::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+/* Đảm bảo lớp nền mờ phủ toàn màn hình */
+#edit-form-overlay {
+  display: none; /* Ẩn lớp nền mặc định */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Nền mờ */
+  z-index: 999; /* Đặt lớp nền dưới modal */
+}
+
+/* Các label và input trong form */
+#edit-form label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+#edit-form input[type="text"],
+#edit-form select {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-top: 4px;
+  box-sizing: border-box;
+}
+
+/* Các nút trong form */
+#edit-form button[type="submit"],
+#edit-form button[type="button"] {
+  margin-top: 12px;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+#edit-form button[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  margin-right: 10px;
+}
+
+#edit-form button[type="button"] {
+  background-color: #6c757d;
+  color: white;
+}
+
+#edit-form button:hover {
+  opacity: 0.9;
+}
+
+/* Đảm bảo form không bị tràn ra ngoài */
+@media (max-width: 768px) {
+  #edit-form {
+    max-width: 90%; /* Khi màn hình nhỏ, form chiếm tối đa 90% chiều rộng */
+    padding: 15px;
+  }
+}
+/*================================================================================*/
+
+#add-form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4);
+  z-index: 999;
+  display: none;
+}
+
+#add-form {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 10px;
+  padding: 30px 40px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  width: 90%;
+  max-width: 700px;
+  max-height: 90vh;
+  overflow-y: auto;
+  z-index: 1000;
+  display: none;
+  box-sizing: border-box;
+}
+
+#add-form h3 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  text-align: center;
+}
+
+#add-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#add-form label {
+  font-weight: 600;
+}
+
+#add-form input,
+#add-form select {
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#add-form button[type="submit"],
+#add-form button[type="button"] {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+#add-form button[type="submit"] {
+  background-color: #28a745;
+  color: white;
+}
+
+#add-form button[type="button"] {
+  background-color: #dc3545;
+  color: white;
+}
+/*---searchinput----*/
+#searchInput {
+  padding: 8px 12px;
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom:20px;
+}

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/css-BanHang/kho.css" />
+    <link rel="stylesheet" href="../../css/css-BanHang/BanHang.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>FastFit</title>
+</head>
+
+<body><div id="toast"></div>
+    <!----------------------------------BEGIN HEAD---------------------------------->
+    <header>
+        <div class="custom-menu">
+            <div class="logo">
+                <img src="../../img/fav-icon.png" alt="GYM" />
+            </div>
+            <nav class="nav-menu" id="kho-nav-menu">
+                <ul>
+                    <li><a href="thongtin-khohang.html" class="nav-item"><i class="fa-solid fa-warehouse"></i> Kho
+                            hàng</a></li>
+                    <li><a href="nhaphang.html" class="nav-item"><i class="fa-solid fa-boxes-packing"></i> Nhập hàng</a>
+                    </li>
+                    <li><a href="ncc.html" class="nav-item"><i class="fa-solid fa-truck"></i> Nhà cung cấp</a></li>
+                    <li><a href="quanly-the.html" class="nav-item"><i class="fa-solid fa-ticket"></i> Vé tập</a></li>
+                </ul>
+            </nav>
+            <nav class="nav-menu">
+                <ul>
+                    <li class="user-profile-display" id="userProfile">
+                        <div class="user-profile-content">
+                            <div class="user-avatar">
+                                <i class="fa-regular fa-user"></i>
+                            </div>
+                            <div class="user-info">
+                                <div class="user-name" id="displayUserName"></div>
+                                <div class="user-position" id="displayUserPosition"></div>
+                            </div>
+                            <i class="fa-solid fa-caret-down dropdown-icon"></i>
+                        </div>
+                        <div class="dropdown_menu" id="logoutDropdown">
+                            <div class="dropdown_menu-col">
+                                <a href="#" class="menu-item" id="logoutBtn">
+                                    <i class="fa-solid fa-power-off"></i>
+                                    <span>Đăng xuất</span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!----------------------------------END HEAD---------------------------------->
+
+    <!----------------------------------BEGIN CONTENT---------------------------------->
+    <div class="container">
+        <div class="sidebar open">
+            <div class="sidebar-list">
+                <div class="khung_BH tim-kiem_NH">
+                    <div class="title_BH">Tìm kiếm</div>
+                    <input type="text" class="form-control" placeholder="Theo mã phiếu nhập">
+                </div>
+                <div class="khung_BH thoi-gian_BH">
+                    <div class="title_BH">Thời gian</div>
+                    <form class="filter-date_BH">
+                        <input type="date" class="form-control-date_BH" id="time-start-user">
+                        <h4>―</h4>
+                        <input type="date" class="form-control-date_BH" id="time-end-user">
+                    </form>
+                </div>
+                <div class="khung_BH trang-thai_NH">
+                    <div class="title_BH">Trạng thái</div>
+                    <div class="filter-group">
+                        <input type="radio" name="status-filter" id="status-all" class="radio" checked>
+                        <label for="status-all">Tất cả</label>
+
+                        <input type="radio" name="status-filter" id="status-temp" class="radio">
+                        <label for="status-temp">Phiếu tạm</label>
+
+                        <input type="radio" name="status-filter" id="status-completed" class="radio">
+                        <label for="status-completed">Đã nhập</label>
+
+                        <input type="radio" name="status-filter" id="status-cancel" class="radio">
+                        <label for="status-cancel">Hủy hàng</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="noi-dung_BH">
+            <div class="header_BH">
+                <h2>Nhập Hàng</h2>
+                <div class="header-buttons_BH">
+                    <button class="btn ban-hang_btn"><i class="fa-solid fa-plus"></i> Nhập mới</button>
+                    <button class="btn xuat-file_btn"><i class="fa-solid fa-file-excel"></i> Xuất file</button>
+                </div>
+            </div>
+
+            <!-- Table -->
+            <div class="table-container_NH">
+                <table class="table-item">
+                    <thead>
+                        <tr>
+                            <th>Hành động</th>
+                            <th class="sortable" data-sort="id">Mã nhập hàng
+                                <i class="fa-solid fa-arrow-up-wide-short"></i>
+                                <i class="fa-solid fa-arrow-down-wide-short" style="display:none"></i>
+                            </th>
+                            <th class="sortable" data-sort="time">Thời gian
+                                <i class="fa-solid fa-arrow-up-wide-short"></i>
+                                <i class="fa-solid fa-arrow-down-wide-short" style="display:none"></i>
+                            </th>
+                            <th class="sortable" data-sort="supplierName">Nhà cung cấp
+                                <i class="fa-solid fa-arrow-up-wide-short"></i>
+                                <i class="fa-solid fa-arrow-down-wide-short" style="display:none"></i>
+                            </th>
+                            <th class="sortable" data-sort="totalAmount">Tổng tiền hàng
+                                <i class="fa-solid fa-arrow-up-wide-short"></i>
+                                <i class="fa-solid fa-arrow-down-wide-short" style="display:none"></i>
+                            </th>
+                            <th>Trạng thái</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+
+            </div>
+
+            <div class="pagination-container"></div>
+        </div>
+
+    </div>
+    <!----------------------------------END CONTENT---------------------------------->
+    <!----------------------------------BEGIN MODALS---------------------------------->
+    <!-- viewImport Modal -->
+    <div class="backdrop" id="import-detail-modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Chi tiết phiếu nhập: <span id="import-id"></span></h3>
+                <button class="close-btn">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="invoice-info">
+                    <div>
+                        <p><strong>Nhà cung cấp:</strong> <span id="supplier-name"></span></p>
+                        <p><strong>Số điện thoại:</strong> <span id="supplier-phone"></span></p>
+                        <p><strong>Ngày:</strong> <span id="import-date"></span></p>
+                    </div>
+                    <div>
+                        <p><strong>Tổng tiền hàng:</strong> <span id="import-total-amount"></span></p>
+                        <p><strong>Trạng thái:</strong> <span id="import-status" class="status-badge"></span></p>
+                    </div>
+                </div>
+
+                <h4 class="Danh-sach-san-pham-titlte">Danh sách sản phẩm</h4>
+                <table class="items-table">
+                    <thead>
+                        <tr>
+                            <th>Sản phẩm</th>
+                            <th>Số lượng</th>
+                            <th>Đơn giá</th>
+                            <th>Thành tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody id="import-items-list"></tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="1">Tổng:</td>
+                            <td id="import-total-items"></td>
+                            <td colspan="2" id="import-summary-total"></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button class="print-btn">
+                    <i class="fa-solid fa-floppy-disk"></i>
+                    In phiếu nhập
+                </button>
+                <button class="close-btn-footer">
+                    <i class="fa-solid fa-xmark"></i> Đóng
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Nhập Hàng -->
+    <div id="import-modal" class="backdrop">
+        <div class="modal-content import-modal-content">
+            <div class="modal-header import-modal-header">
+                <h3>Tạo phiếu nhập mới</h3>
+                <button class="close-btn">×</button>
+            </div>
+            <div class="modal-body import-modal-body">
+                <div class="import-modal-container">
+                    <!-- Left Side - Import Form -->
+                    <div class="invoice-form-container">
+                        <div class="form-group">
+                            <label for="new-import-id">Mã phiếu nhập:</label>
+                            <input type="text" id="new-import-id" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="new-supplier-name">Nhà cung cấp:</label>
+                            <select id="new-supplier-name" required>
+                                <option value="">-- Chọn nhà cung cấp --</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="new-import-date">Ngày nhập</label>
+                            <input type="date" id="new-import-date" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="new-import-status">Trạng thái:</label>
+                                <select id="new-import-status">
+                                    <option value="Phiếu tạm">Phiếu tạm</option>
+                                    <option value="Đã nhập">Đã nhập</option>
+                                    <option value="Hủy hàng">Hủy hàng</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="products-section">
+                            <div class="products-header">
+                                <h4>Danh sách sản phẩm</h4>
+                                <button id="add-import-product-btn" type="button">+ Thêm sản phẩm</button>
+                            </div>
+                            <table class="products-table">
+                                <thead>
+                                    <tr>
+                                        <th>Tên sản phẩm</th>
+                                        <th>Số lượng</th>
+                                        <th>Đơn giá</th>
+                                        <th>Thao tác</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="import-products-container"></tbody>
+                            </table>
+                        </div>
+                        <div class="invoice-summary">
+                            <p><strong>Tổng tiền hàng:</strong> <span id="import-total-amount">0 ₫</span></p>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button id="save-import-btn" class="save-invoice-btn">
+                                <i class="fa-solid fa-check"></i> Lưu phiếu nhập
+                            </button>
+                            <button id="close-import-btn" class="close-btn-footer">
+                                <i class="fa-solid fa-xmark"></i> Hủy
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Right Side - Product Inventory -->
+                    <div class="inventory-products-container">
+                        <h4>Sản phẩm trong kho</h4>
+                        <div id="import-inventory-products"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!----------------------------------END MODALS---------------------------------->
+    <script src="../../js/js-BanHang/nhaphang.js"></script>
+    <script src="../../js/toast-message.js"></script>
+    <script src="../../js/index.js"></script>
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+</body>
+
+</html>
