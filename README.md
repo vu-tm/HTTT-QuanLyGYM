@@ -16,7 +16,7 @@ Tài khoản: sell
 / Mật khẩu: 123
 
 
-**Cần cài đặt trước khi dùng: **
+Cần cài đặt trước khi dùng:
 SQL Server Management Studio
 
 **Giao diện đăng nhập**
