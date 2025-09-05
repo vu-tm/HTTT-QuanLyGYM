@@ -16,8 +16,7 @@ Tài khoản: sell
 / Mật khẩu: 123
 
 
-Cần cài đặt trước khi dùng:
-SQL Server Management Studio
+Cần cài đặt SQL Server Management Studio trước khi dùng:
 
 **Giao diện đăng nhập**
 <img width="972" height="468" alt="Image" src="https://github.com/user-attachments/assets/cbc56e0a-2c38-4a55-acf2-5720074388ff" />
@@ -56,4 +55,4 @@ SQL Server Management Studio
 **Giao diện quản lý nhà cung cấp**
 <img width="982" height="476" alt="Image" src="https://github.com/user-attachments/assets/164ae89e-61ac-4ad0-bf9e-979d9beefbee" />
 
-....
+**....**
