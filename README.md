@@ -3,16 +3,19 @@
 **ADMIN**
 
 Tài khoản: admin
+
 Mật khẩu: 123
 
 **QL_KHO**
 
 Tài khoản: kho
+
 Mật khẩu: 123
 
 **NV_BAN**
 
 Tài khoản: sell
+
 Mật khẩu: 123
 
 
