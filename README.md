@@ -1,16 +1,16 @@
 # HTTT-QuanLyGYM
 
-<h2><b>Tài khoản Admin</b></h2>
+<h3><b>Tài khoản Admin</b></h3>
 
 - **Username:** admin  
 - **Password:** 123
 
-<h2><b>Tài khoản Quản Lý Kho</b></h2>
+<h3><b>Tài khoản Quản Lý Kho</b></h3>
 
 - **Username:** kho  
 - **Password:** 123
 
-<h2><b>Tài khoản Nhân Viên Bán Hàng</b></h2>
+<h3><b>Tài khoản Nhân Viên Bán Hàng</b></h3>
 
 - **Username:** sell  
 - **Password:** 123
