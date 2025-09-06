@@ -42,9 +42,9 @@ app.use('/api', router);
 
 // Kết nối SQL Server
 const config = {
-  user: "viet",
+  user: "admin",
   password: "123456",
-  server: "INSPIRON-5420",
+  server: "localhost",
   database: "QLGym",
   options: {
     encrypt: false,
@@ -1913,4 +1913,5 @@ app.get('/api/employee-statistics', async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
+
 
