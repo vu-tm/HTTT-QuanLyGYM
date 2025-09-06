@@ -2,18 +2,18 @@
 
 <h3><b>Tài khoản Admin</b></h3>
 
-- **Username:** admin  
-- **Password:** 123
+- **Username:** `admin` 
+- **Password:** `123`
 
 <h3><b>Tài khoản Quản Lý Kho</b></h3>
 
-- **Username:** kho  
-- **Password:** 123
+- **Username:** `kho`  
+- **Password:** `123`
 
 <h3><b>Tài khoản Nhân Viên Bán Hàng</b></h3>
 
-- **Username:** sell  
-- **Password:** 123
+- **Username:** `sell`  
+- **Password:** `123`
 
 ⌯⌲ Cần cài đặt **SQL Server Management Studio** trước khi dùng:
 
