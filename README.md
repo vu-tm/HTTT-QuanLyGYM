@@ -1,5 +1,13 @@
 # HTTT-QuanLyGYM
 
+### Thành viên nhóm
+<img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30"> Trương Minh Vũ - 3123410437  <br>
+<img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30"> Vũ Ngọc Tùng - 3123410418  <br>
+<img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30"> Ngô Quốc Việt - 3123410427       <br>
+<img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30"> Phan Thanh Tùng - 3123410417       <br>
+<img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30"> Đặng Phúc Thuận – 3123560085
+
+
 <h3><b>Tài khoản Admin</b></h3>
 
 - **Username:** `admin` 
