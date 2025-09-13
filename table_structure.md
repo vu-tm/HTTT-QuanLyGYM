@@ -6,7 +6,7 @@
 # Mô tả các bảng dữ liệu:
 
 ### KHACHANG : Lưu thông tin khách hàng
-| Tên trường   | Kiểu dữ liệu     | Mô tả             |
+| Tên trường   | Kiểu dữ liệu     |       Mô tả       |
 |--------------|------------------|-------------------|
 | MaKH         | INT, PK          | Mã khách hàng     |
 | HoTen        | NVARCHAR(255)    | Họ tên khách hàng |
@@ -16,13 +16,13 @@
 | MaGoi        | INT, FK          | Mã gói tập        |
 
 ### GOITAP : Lưu thông tin gói tập
-| Tên trường | Kiểu dữ liệu     | Mô tả     |
-|------------|------------------|-----------|
-| MaGoi     | INT, PK          | Mã gói tập    |
+| Tên trường |  Kiểu dữ liệu    |     Mô tả     |
+|------------|------------------|---------------|
+| MaGoi      | INT, PK          | Mã gói tập    |
 | TenGoi     | NVARCHAR(255)    | Tên gói tập   |
-| MoTa     | TEXT    | Mô tả   |
-| Gia     | FLOAT    | Giá tiền   |
-| TC       | INT          | Thời gian gói|
+| MoTa       | TEXT             | Mô tả         |
+| Gia        | FLOAT            | Giá tiền      |
+| TC         | INT              | Thời gian gói |
 
 ### LICHTAP : Lưu thông tin lịch tập
 | Tên trường | Kiểu dữ liệu     | Mô tả     |
@@ -90,12 +90,12 @@
 
 
 ### NHACUNGCAP : Lưu thông tin nhà cung cấp  
-| Tên trường | Kiểu dữ liệu     | Mô tả               |
-|------------|------------------|---------------------|
-| MaNCC      | INT, PK          | Mã nhà cung cấp     |
-| TenNCC     | NVARCHAR(255)    | Tên nhà cung cấp    |
-| DiaChi     | NVARCHAR(255)    | Địa chỉ             |
-| SDT      | VARCHAR(20)          | Số điện thoại        |
+| Tên trường |   Kiểu dữ liệu   |       Mô tả      |
+|------------|------------------|------------------|
+| MaNCC      | INT, PK          | Mã nhà cung cấp  |
+| TenNCC     | NVARCHAR(255)    | Tên nhà cung cấp |
+| DiaChi     | NVARCHAR(255)    | Địa chỉ          |
+| SDT        | VARCHAR(20)      | Số điện thoại    |
 
 ### KHO : Lưu thông tin kho  
 | Tên trường | Kiểu dữ liệu     | Mô tả      |
@@ -107,7 +107,7 @@
 
 
 ### PHIEUNHAP : Lưu thông tin phiếu nhập hàng  
-| Tên trường | Kiểu dữ liệu     | Mô tả             |
+| Tên trường | Kiểu dữ liệu     | Mô tả            |
 |------------|------------------|------------------|
 | MaPhieu    | INT, PK          | Mã phiếu nhập    |
 | MaKho      | INT, FK          | Mã kho           |
