@@ -1,4 +1,4 @@
-# HTTT-QuanLyGYM
+# Hệ thống quản lý phòng gym
 
 ### Thành viên nhóm
 <img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30"> Trương Minh Vũ - 3123410437  <br>
